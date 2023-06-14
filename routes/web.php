@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProfileController::class, 'home']);
+Route::get('/profile', [ProfileController::class, 'information']);
+Route::get('/profile/edit', [ProfileController::class, 'edit']);
+Route::put('/profile', [ProfileController::class, 'update']);
