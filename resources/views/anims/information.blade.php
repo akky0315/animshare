@@ -7,16 +7,17 @@
     </head>
     
     <body class="antialiased">
-        <h1>プロフィール</h1>
+        <h1>あなたのおすすめアニメ</h1>
         <div class="profile">
-            <h3 class='name'>名前：{{ $profile->name }}<br></h3>
-            <h3 class='id'>ID：{{ $profile->id }}</h3>
+            @foreach($anims as $anim)
+            <h3 class='anim'>アニメ：{{ $anim->title }}<br></h3>
+            @endforeach
         </div>
         <div class="edit">
-            <a href="/profiles/{{ $profile->id }}/edit">編集</a>
+            <a href="/anim/edit">編集</a>
         </div>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+            <a href="/">ホームへ</a>
         </div>
     </body>
 </html>

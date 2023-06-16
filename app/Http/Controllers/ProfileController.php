@@ -7,13 +7,27 @@ use App\Models\Profile;
 
 class ProfileController extends Controller
 {
+    public function welcome()
+    {
+        return view('welcome');
+    }
+    public function create(Profile $profile)
+    {
+        return view('profiles.create');
+    }
+    public function store(Request $request, Profile $profile)
+    {
+        $input = $request['profile'];
+        $profile->fill($input)->save();
+        return redirect('/profiles/' . $profile->id . '/anims/create');
+    }
     public function home(Profile $profile)
     {
-        return view('home')->with(['profile' => $profile->find(1)]);
+        return view('home')->with(['profile' => $profile]);
     }
     public function information(Profile $profile)
     {
-        return view('profiles.information')->with(['profile' => $profile->find(1)]);
+        return view('profiles.information')->with(['profile' => $profile]);
     }
     public function edit(Profile $profile)
     {
@@ -22,8 +36,8 @@ class ProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         $input_profile = $request['profile'];
-        $profile->find(1)->fill($input_profile)->save();
+        $profile->fill($input_profile)->save();
         
-        return redirect('/profile');
+        return redirect('/profiles/' . $profile->id);
     }
 }
