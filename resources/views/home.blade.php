@@ -15,7 +15,7 @@
         </div>
         <div class='select'>
             <h3>おすすめアニメ選択<br></h3>
-            <a href="/display">選択<br></a>
+            <a href="/select">選択<br></a>
         </div>
         <div class='friend'>
             <a href="/friend">フレンド<br></a>
