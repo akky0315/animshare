@@ -8,7 +8,7 @@
     
     <body class="antialiased">
         <h1 class='name'>{{ $profile->name }}さんようこそ！<br></h1>
-        <a href="/profile">プロフィール表示<br></a>
+        <a href="/profiles/{{ $profile->id }}">プロフィール表示<br></a>
         <div class='display'>
             <h3>おすすめアニメ表示<br></h3>
             <a href="/display">表示<br></a>

@@ -8,13 +8,13 @@
     
     <body class="antialiased">
         <div>
+            <select name="anim[title]">
                 @foreach($animdatas as $animdata)
-                    <a>{{ $animdata['title'] }}<br></a>
+                <option value='{{ $animdata['id'] }}'>{{ $animdata['title'] }}</option>
                 @endforeach
-                </div>
+            </select>
         </div>
-        <div class="footer">
-            <a href="/">ホームへ</a>
-        </div>
+        <input type="submit" value="決定"><br>
+        <a href='/profiles/{{ $profile->id }}/anims/check'>戻る</a>
     </body>
 </html>

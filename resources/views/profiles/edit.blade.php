@@ -10,7 +10,7 @@
     <body class="antialiased">
         <h1>プロフィール編集</h1>
         <div class="content">
-            <form action="/profile" method="POST">
+            <form action="/profiles/{{ $profile->id }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class='content_name'>
