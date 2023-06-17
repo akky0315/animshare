@@ -19,7 +19,11 @@ class ProfileController extends Controller
     {
         $input = $request['profile'];
         $profile->fill($input)->save();
-        return redirect('/profiles/' . $profile->id . '/anims/create');
+        return redirect('/profiles/' . $profile->id . '/create/complete');
+    }
+    public function complete(Profile $profile)
+    {
+        return view('profiles.complete')->with(['profile' => $profile]);
     }
     public function home(Profile $profile)
     {

@@ -9,11 +9,9 @@
     </head>
     <body class="antialiased">
         <h1>アニメ作成</h1>
-        @for($i = 0; $i < 3; $i++)
             <a>アニメ：</a>
-            <input type="text" name="anim[title]" placeholder="アニメ名" value="{{ old('anim.title') }}">
-            <a href="/profiles/{{ $profile->id }}/anims/check">検索<br></a>
-        @endfor
+            <a>{{ $anim->title }}</a>
+            <a href="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create/check">検索<br></a>
         <input type="submit" value='決定'><br>
         <a href="/profile/{{ $profile->id }}/home">ホームへ</a>
     </body>

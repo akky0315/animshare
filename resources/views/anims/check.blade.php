@@ -8,7 +8,7 @@
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <form action="/profiles/{{ $profile->id }}/anims" method="POST">
+        <form action="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create" method="POST">
             @csrf
             <a>年代：</a>
             <input type="number" name="year_num" placeholder="2023"><br>
