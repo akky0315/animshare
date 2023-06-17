@@ -7,14 +7,17 @@
     </head>
     
     <body class="antialiased">
-        <div>
-            <select name="anim[title]">
-                @foreach($animdatas as $animdata)
-                <option value='{{ $animdata['id'] }}'>{{ $animdata['title'] }}</option>
-                @endforeach
-            </select>
+        <div class="content">
+            <form action="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}" method="POST">
+                @csrf
+                <select name="anim[title]">
+                    @foreach($animdatas as $animdata)
+                    <option value='{{ $animdata['title'] }}'>{{ $animdata['title'] }}</option>
+                    @endforeach
+                </select><br>
+                <input type="submit" value="決定"><br>
+            </form>
         </div>
-        <input type="submit" value="決定"><br>
-        <a href='/profiles/{{ $profile->id }}/anims/check'>戻る</a>
+        <a href='/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/check'>戻る</a>
     </body>
 </html>

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Anim extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'title',
+        'profile_id',
+        ];
+        
+    public function profile()
+    {
+        return $this->belongTo(Profile::class);
+    }
 }

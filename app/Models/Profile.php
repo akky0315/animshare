@@ -12,4 +12,13 @@ class Profile extends Model
     protected $fillable = [
         'name',
     ];
+    
+    public function anims()
+    {
+        return $this->hasMany(Anim::class);
+    }
+    public function getByProfile()
+    {
+        return $this->anims()->with('profile');
+    }
 }

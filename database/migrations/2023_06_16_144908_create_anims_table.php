@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('anims', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
+            $table->string('title', 100)->nullable();
+            $table->foreignId('profile_id')->constrained();
             $table->timestamps();
         });
     }

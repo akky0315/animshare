@@ -5,22 +5,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\Anim;
+use Illuminate\Support\Facades\DB;
 
 class AnimController extends Controller
 {
+    public function get(Profile $profile, Anim $anim, Request $request)
+    {
+        $input_fk = $request['profile'];
+        $anim->profile_id = $input_fk['id'];
+        $anim->save();
+        
+        $input_fk = $request['profile'];
+        $anim->profile_id = $input_fk['id'];
+        $anim->save();
+        
+        $input_fk = $request['profile'];
+        $anim->profile_id = $input_fk['id'];
+        $anim->save();
+        
+        return redirect('/profiles/' . $profile->id . '/anims/' . $anim->id . '/create');
+    }
     public function create(Profile $profile, Anim $anim)
     {
-        return view('anims.create')->with(['profile' => $profile]);
+        return view('anims.create')->with(['profile' => $profile, 'anim' => $anim]);
     }
     public function check(Profile $profile, Anim $anim)
     {
-        return view('anims.check')->with(['profile' => $profile]);
+        return view('anims.check')->with(['profile' => $profile, 'anim' => $anim]);
     }
     public function index3(Profile $profile, Anim $anim, Request $request)
     {
-        if ($request['year_num']==2023 && $request['cule_num']==2){
+        $num = $request['year_num'];
+        $num1 = $request['cule_num'];
+            
         $client = new \GuzzleHttp\Client();
-        $url = 'https://api.moemoe.tokyo/anime/v1/master/2023/2';
+        $url = 'https://api.moemoe.tokyo/anime/v1/master/' . $num  . '/' .  $num1 ;
         
         $response = $client->request(
             'GET',
@@ -32,7 +51,15 @@ class AnimController extends Controller
         return view('anims/index')->with([
             'animdatas' => $animdatas,
             'profile' => $profile,
+            'anim' => $anim,
         ]);
-        }
+    }
+    public function insert(Profile $profile, Anim $anim, Request $request)
+    {
+        $input_anim = $request['anim'];
+        $anim->title = $input_anim['title'];
+        $anim->save();
+        
+        return redirect('profiles/' . $profile->id . '/anims/' . $anim->id . '/create');
     }
 }
