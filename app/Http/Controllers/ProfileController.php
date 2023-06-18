@@ -15,15 +15,15 @@ class ProfileController extends Controller
     {
         return view('profiles.create');
     }
-    public function store(Request $request, Profile $profile)
+    public function store(Profile $profile, Request $request)
     {
         $input = $request['profile'];
         $profile->fill($input)->save();
-        return redirect('/profiles/' . $profile->id . '/create/complete');
+        return redirect('/profiles/' . $profile->id . '/anims/create');
     }
     public function complete(Profile $profile)
     {
-        return view('profiles.complete')->with(['profile' => $profile]);
+        return view('profiles.complete')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);
     }
     public function home(Profile $profile)
     {
@@ -37,7 +37,7 @@ class ProfileController extends Controller
     {
         return view('profiles.edit')->with(['profile' => $profile]);
     }
-    public function update(Request $request, Profile $profile)
+    public function update(Profile $profile, Request $request)
     {
         $input_profile = $request['profile'];
         $profile->fill($input_profile)->save();

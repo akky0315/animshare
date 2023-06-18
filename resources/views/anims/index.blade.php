@@ -18,6 +18,6 @@
                 <input type="submit" value="決定"><br>
             </form>
         </div>
-        <a href='/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/check'>戻る</a>
+        <a href='/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create/check'>戻る</a>
     </body>
 </html>

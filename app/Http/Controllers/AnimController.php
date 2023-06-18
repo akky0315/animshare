@@ -15,19 +15,19 @@ class AnimController extends Controller
         $anim->profile_id = $input_fk['id'];
         $anim->save();
         
-        $input_fk = $request['profile'];
-        $anim->profile_id = $input_fk['id'];
-        $anim->save();
-        
-        $input_fk = $request['profile'];
-        $anim->profile_id = $input_fk['id'];
-        $anim->save();
-        
-        return redirect('/profiles/' . $profile->id . '/anims/' . $anim->id . '/create');
+        return redirect("/profiles/" . $profile->id . "/anims/" . $anim->id . "/create/check");
     }
-    public function create(Profile $profile, Anim $anim)
+    public function create(Profile $profile)
     {
-        return view('anims.create')->with(['profile' => $profile, 'anim' => $anim]);
+        return view('anims.create')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);
+    }
+    public function display(Profile $profile)
+    {
+        return view('anims.display')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);
+    }
+    public function edit(Profile $profile)
+    {
+        return view('anims.edit')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);
     }
     public function check(Profile $profile, Anim $anim)
     {
@@ -60,6 +60,7 @@ class AnimController extends Controller
         $anim->title = $input_anim['title'];
         $anim->save();
         
-        return redirect('profiles/' . $profile->id . '/anims/' . $anim->id . '/create');
+        return redirect('profiles/' . $profile->id . '/anims/create');
     }
+    
 }

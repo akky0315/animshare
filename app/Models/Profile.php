@@ -19,6 +19,6 @@ class Profile extends Model
     }
     public function getByProfile()
     {
-        return $this->anims()->with('profile');
+        return $this->anims()->get();
     }
 }
