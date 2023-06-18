@@ -9,23 +9,18 @@
     </head>
     <body class="antialiased">
         <h1>アニメ作成</h1>
-            <form action="/profiles/{{ $profile->id }}/create" method="POST">
+            <form action="/profiles/{{ $profile->id }}/edit" method="POST">
             @csrf
             <a type="hidden" value="{{ $count = 1 }}"></a>
             
             @foreach($anims as $anim)
-                <h3>アニメ{{ $count }} : {{ $anim->title }}</h3><br>
+                <h3>アニメ{{ $count }}を変更</h3><br>
+                <a href="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create/check">{{ $anim->title }}</a>
                 <a type="hidden" value="{{ $count++ }}"></a>
             @endforeach
-            
-            @if($count < 4)
-                <input type="hidden" name="profile[id]" value={{ $profile->id }}>
-                <input type="submit" value="検索"><br></a>
-            @endif
-            
-            @if($count == 4)
-                <a href="/profiles/{{ $profile->id }}/complete">決定</a>
-            @endif
+            <div class="footer">
+                <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+            </div>
             </form>
     </body>
 </html>

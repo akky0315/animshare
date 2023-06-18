@@ -17,7 +17,6 @@
             <a>例）</a><br>
             <a>冬に放送されたアニメ：１<br>春に放送されたアニメ：２<br>夏に放送されたアニメ：３<br>秋に放送されたアニメ：４<br></a>
             <input type="submit" value="決定"><br><br>
-            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
         </form>
     </body>
 </html>

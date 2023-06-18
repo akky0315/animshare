@@ -7,12 +7,15 @@
     </head>
     
     <body class="antialiased">
-        <h1 class='name'>あなたの名前は{{ $profile->name }}に決まりました！<br></h1>
-        <h3>続いて、あなたのおすすめしたいアニメを３つ教えてね！</h3>
-        <form action="/profiles/{{ $profile->id }}/create" method="POST">
-            @csrf
-            <input type="hidden" name="profile[id]" value={{ $profile->id }}>
-            <input type="submit" value="次へ">
-        </form>
+        <h1>あなたのおすすめアニメが決まったよ！<br></h1>
+        @csrf
+        <a type="hidden" value="{{ $count = 1 }}"></a>
+            @foreach($anims as $anim)
+            <h3>アニメ{{ $count }} : {{ $anim->title }}</h3>
+            <a type="hidden" value="{{ $count++ }}"></a>
+            @endforeach
+        <div class="footer">
+            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+        </div>
     </body>
 </html>
