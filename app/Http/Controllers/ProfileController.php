@@ -17,13 +17,13 @@ class ProfileController extends Controller
     }
     public function store(Profile $profile, Request $request)
     {
-        $input = $request['profile'];
-        $profile->fill($input)->save();
+        $input = $request['profile'];   //profiles.createビューファイル内のnameタグ[profile]の値を取得
+        $profile->fill($input)->save();   //取得した値をprofilesテーブルのnameに格納し、保存
         return redirect('/profiles/' . $profile->id . '/anims/create');
     }
     public function complete(Profile $profile)
     {
-        return view('profiles.complete')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);
+        return view('profiles.complete')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);   //profileの主キーと一致する外部キーを持つanimレコードを取得
     }
     public function home(Profile $profile)
     {
@@ -39,8 +39,8 @@ class ProfileController extends Controller
     }
     public function update(Profile $profile, Request $request)
     {
-        $input_profile = $request['profile'];
-        $profile->fill($input_profile)->save();
+        $input = $request['profile'];   //profiles.editビューファイル内のnameタグ[profile]の値を取得
+        $profile->fill($input)->save();   ////取得した値をprofilesテーブルのnameに格納し、保存
         
         return redirect('/profiles/' . $profile->id);
     }
