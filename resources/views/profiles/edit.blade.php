@@ -2,13 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>プロフィール編集</title>
+        <title>Animshare</title>
 
         <!-- Fonts -->
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <h1>プロフィール編集</h1>
+        <h1 class="title">プロフィール編集</h1>
         <div class="content">
             <form action="/profiles/{{ $profile->id }}" method="POST">
                 @csrf

@@ -14,23 +14,29 @@ use App\Http\Controllers\AnimController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [ProfileController::class, 'welcome']);
-Route::get('/profiles', [ProfileController::class, 'index']);
-Route::get('/profiles/create', [ProfileController::class, 'create']);
-Route::get('/profiles/{profile}/complete', [ProfileController::class, 'complete']);
-Route::post('/profiles', [ProfileController::class, 'store']);
-Route::get('/profiles/{profile}/home', [ProfileController::class, 'home']);
-Route::get('/profiles/{profile}', [ProfileController::class, 'information']);
-Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit']);
-Route::put('/profiles/{profile}', [ProfileController::class, 'update']);
+Route::controller(ProfileController::class)->group(function(){
+    Route::get('/', 'welcome')->name('welcome');    //ログイン後画面に遷移
+    Route::get('/profiles/create', 'create')->name('profile.create');   //プロフィール作成画面に遷移
+    Route::get('/profiles/{profile}/complete', 'complete')->name('profile.complete');   //プロフィール作成完了画面に遷移
+    Route::post('/profiles', 'store')->name('profile.store');   //profilesテーブルに新たなレコード情報を渡し、作成
+    Route::get('/profiles/{profile}/home', 'home')->name('home');   //ホーム画面に遷移
+    Route::get('/profiles/{profile}', 'information')->name('profile.information');  //プロフィール情報を確認する画面に遷移
+    Route::get('/profiles/{profile}/edit', 'edit')->name('profile.edit');   //プロフィール情報を編集する画面に遷移
+    Route::put('/profiles/{profile}', 'update')->name('profile.update');   //既存するprofilesテーブル内のレコードの内容を変更し、保存    
+});
 
-Route::get('/profiles/{profile}/anims/create', [AnimController::class, 'create']);
-Route::get('/profiles/{profile}/anims/display', [AnimController::class, 'display']);
-Route::get('/profiles/{profile}/anims/edit', [AnimController::class, 'edit']);
-Route::get('/profiles/{profile}/anims/{anim}/create/check', [AnimController::class, 'check']);
-Route::post('/profiles/{profile}/anims/{anim}/create', [AnimController::class, 'index3']);
-Route::post('/profiles/{profile}/anims/{anim}', [AnimController::class, 'insert']);
-Route::post('/profiles/{profile}/create', [AnimController::class, 'get']);
+Route::controller(AnimController::class)->group(function(){
+    Route::get('/profiles/{profile}/anims/create', 'create')->name('anim.create');   //アニメ作成画面に遷移
+    Route::get('/profiles/{profile}/anims/{anim}/create/check', 'check')->name('anim.check');   //APIでアニメを検索するための情報を入力する画面に遷移
+    Route::post('/profiles/{profile}/create', 'get')->name('anim.get');   //animsテーブルに新たなレコードに情報を渡し、作成
+    Route::post('/profiles/{profile}/anims/{anim}/create', 'index')->name('anim.index');   //入力されたデータをAPIに渡し、アニメデータを取得
+    Route::post('/profiles/{profile}/anims/{anim}', 'insert')->name('anim.insert');   //既存のanimsテーブル内のレコードにデータを渡し、保存
+    Route::get('/profiles/{profile}/anims/display', 'display')->name('anim.display');    //アニメ情報を確認する画面に遷移
+    Route::get('/profiles/{profile}/anims/edit', 'edit')->name('anim.edit');   //アニメ情報を編集する画面に遷移
+    Route::get('/profiles/{profile}/anims/select', 'select')->name('anim.select');   //視聴するアニメ情報の取得の仕方を選ぶ画面に遷移
+    Route::get('/profiles/{profile}/anims/select/random', 'random')->name('anim.random');   //
+    Route::post('/profiles/{profile}/anims', 'complete')->name('anim.complete');
+    Route::get('/profiles/{profile}/anims/select/complete', 'history')->name('anim.history');
+});
 
-Route::get('/display', [AnimController::class, 'index']);
 

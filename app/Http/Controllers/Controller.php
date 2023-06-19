@@ -14,12 +14,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
-    public function index(Profile $profile)
-    {
-        return $profile->get();
-    }
-    public function index2(Anim $anim)
-    {
-        return $anim->get();
-    }
 }
