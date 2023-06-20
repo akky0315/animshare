@@ -16,7 +16,7 @@
                 @foreach($anims as $anim)
                 <div class="anim">
                     <h3>アニメ{{ $count }} : {{ $anim->title }}</h3>
-                    <input type="checkbox" name="judge" value={{ $anim->id }}>
+                    <input type="radio" name="judge" value={{ $anim->id }}>
                 </div>
                 <a type="hidden" value="{{ $count++ }}"></a>
                 @endforeach
