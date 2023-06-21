@@ -24,7 +24,7 @@
             <a href="/friend">フレンド<br></a>
         </div>
         <div class="footer">
-            <a href="/select_history">選択履歴</a>
+            <a href="/profiles/{{ $profile->id }}/history">選択履歴</a>
         </div>
     </body>
 </html>

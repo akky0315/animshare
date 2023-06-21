@@ -68,21 +68,31 @@ class AnimController extends Controller
     }
     public function random(Profile $profile)
     {
-        $to_profile = Profile::inRandomOrder()->first();
+        do
+        {
+            $to_profile = Profile::inRandomOrder()->first();
+        }
+        while ($profile->id === $to_profile->id);
         
         return view('anims.random')->with(['profile' => $profile, 'to_profile' => $to_profile, 'anims' => $to_profile->getByProfile()]);
     }
-    public function complete(Profile $profile, Anim $anim, Request $request, Profile_anim $profile_anim)
+    public function random2(Profile $profile, Request $request)
     {
-            $value = $request['judge'];
-            $profile_anim->anim_id = $value;
-            $profile_anim->from_profile_id = $profile->id;
-            $profile_anim->save();
+        $input_anims = $request['id'];
+        $input_profile = $request['profile'];
+            
+        $profile->fill($input_profile)->save();
+            
+        $profile->profileAnims()->attach($input_anims);
         
-        return redirect('profiles/' . $profile->id . '/anims/select/complete');
+        return redirect('profiles/' . $profile->id . '/anims/' . $input_anims . '/select/complete');
+    }
+    public function complete(Profile $profile, Anim $anim)
+    {
+        return view('anims.complete')->with(['profile' => $profile, 'anim' => $anim]);
     }
     public function history(Profile $profile)
     {
-        return view('home')->with(['profile' => $profile]);
+        return view('anims.history')->with(['anims' => $profile->getByProfileAnims(), 'profile' => $profile]);
     }
 }

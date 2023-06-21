@@ -18,4 +18,12 @@ class Anim extends Model
     {
         return $this->belongTo(Profile::class);
     }
+    public function profileAnims()
+    {
+        return $this->belongsToMany(Profile::class);
+    }
+    public function getByProfileAnims()
+    {
+        return $this->profileAnims()->get();
+    }
 }
