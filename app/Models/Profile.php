@@ -21,4 +21,12 @@ class Profile extends Model
     {
         return $this->anims()->get();
     }
+    public function profileAnims()
+    {
+        return $this->belongsToMany(Anim::class);
+    }
+    public function getByProfileAnims()
+    {
+        return $this->profileAnims()->get();
+    }
 }

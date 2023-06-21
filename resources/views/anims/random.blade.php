@@ -16,10 +16,11 @@
                 @foreach($anims as $anim)
                 <div class="anim">
                     <h3>アニメ{{ $count }} : {{ $anim->title }}</h3>
-                    <input type="radio" name="judge" value={{ $anim->id }}>
+                    <input type="radio" name="id" value={{ $anim->id }}>
                 </div>
                 <a type="hidden" value="{{ $count++ }}"></a>
                 @endforeach
+                <input type="hidden" name=profile[name] value="{{ $profile->name }}">
             </div>
             <input type='submit' value="決定">
             </form>
