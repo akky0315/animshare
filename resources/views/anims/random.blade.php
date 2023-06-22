@@ -26,7 +26,7 @@
             </form>
         </div>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/anims/select">再選択</a>
-        </div>    
+            <a href="/profiles/{{ $profile->id }}/anims/select/random">再選択</a>
+        </div>
     </body>
 </html>

@@ -19,7 +19,7 @@ Route::controller(ProfileController::class)->group(function(){
     Route::get('/', 'welcome')->name('welcome');    //ログイン後画面に遷移
     Route::get('/profiles/create', 'create')->name('profile.create');   //プロフィール作成画面に遷移
     Route::get('/profiles/{profile}/complete', 'complete')->name('profile.complete');   //プロフィール作成完了画面に遷移
-    Route::post('/profiles', 'store')->name('profile.store');   //profilesテーブルに新たなレコード情報を渡し、作成
+    Route::post('/profiles/create', 'store')->name('profile.store');   //profilesテーブルに新たなレコード情報を渡し、作成
     Route::get('/profiles/{profile}/home', 'home')->name('home');   //ホーム画面に遷移
     Route::get('/profiles/{profile}', 'information')->name('profile.information');  //プロフィール情報を確認する画面に遷移
     Route::get('/profiles/{profile}/edit', 'edit')->name('profile.edit');   //プロフィール情報を編集する画面に遷移

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnimRequest;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\Anim;
@@ -26,7 +27,7 @@ class AnimController extends Controller
     {
         return view('anims.check')->with(['profile' => $profile, 'anim' => $anim]);
     }
-    public function index(Profile $profile, Anim $anim, Request $request)
+    public function index(Profile $profile, Anim $anim, AnimRequest $request)
     {
         $num = $request['num'];    //anims.checkビューファイル内のnameタグ[year_num]の値を取得
             
@@ -70,20 +71,17 @@ class AnimController extends Controller
     {
         do
         {
-            $to_profile = Profile::inRandomOrder()->first();
+            $to_profile = Profile::inRandomOrder()->first();   //ランダムにprofileレコードを取得し、格納
         }
-        while ($profile->id === $to_profile->id);
+        while ($profile->id === $to_profile->id);   //格納したデータが一致していれば、やり直し
         
-        return view('anims.random')->with(['profile' => $profile, 'to_profile' => $to_profile, 'anims' => $to_profile->getByProfile()]);
+        return view('anims.random')->with(['profile' => $profile, 'to_profile' => $to_profile, 'anims' => $to_profile->getByProfile()]);   //受け取ったprofileのidを外部キーにもつanimレコードを取得
     }
     public function random2(Profile $profile, Request $request)
     {
-        $input_anims = $request['id'];
-        $input_profile = $request['profile'];
+        $input_anims = $request['id'];   //選択したanimデータを取得
             
-        $profile->fill($input_profile)->save();
-            
-        $profile->profileAnims()->attach($input_anims);
+        $profile->profileAnims()->attach($input_anims);   //attachメソッドを使って中間テーブルにデータを保存
         
         return redirect('profiles/' . $profile->id . '/anims/' . $input_anims . '/select/complete');
     }
@@ -93,6 +91,6 @@ class AnimController extends Controller
     }
     public function history(Profile $profile)
     {
-        return view('anims.history')->with(['anims' => $profile->getByProfileAnims(), 'profile' => $profile]);
+        return view('anims.history')->with(['anims' => $profile->getByProfileAnims(), 'profile' => $profile]);   //profileの主キーと一致するanim_history内のレコードを取得し、そのanimレコードを表示
     }
 }
