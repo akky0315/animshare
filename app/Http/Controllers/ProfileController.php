@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 
 class ProfileController extends Controller
@@ -15,7 +15,7 @@ class ProfileController extends Controller
     {
         return view('profiles.create');
     }
-    public function store(Profile $profile, Request $request)
+    public function store(Profile $profile, ProfileRequest $request)
     {
         $input = $request['profile'];   //profiles.createビューファイル内のnameタグ[profile]の値を取得
         $profile->fill($input)->save();   //取得した値をprofilesテーブルのnameに格納し、保存
@@ -37,7 +37,7 @@ class ProfileController extends Controller
     {
         return view('profiles.edit')->with(['profile' => $profile]);
     }
-    public function update(Profile $profile, Request $request)
+    public function update(Profile $profile, ProfileRequest $request)
     {
         $input = $request['profile'];   //profiles.editビューファイル内のnameタグ[profile]の値を取得
         $profile->fill($input)->save();   ////取得した値をprofilesテーブルのnameに格納し、保存

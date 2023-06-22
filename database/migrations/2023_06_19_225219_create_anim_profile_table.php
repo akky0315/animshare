@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('anim_id')->constrained('anims');
             $table->foreignId('profile_id')->constrained('profiles');
             $table->primary(['anim_id', 'profile_id']);
-            $table->timestamps();
         });
     }
 
