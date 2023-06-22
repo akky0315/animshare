@@ -20,6 +20,7 @@
                         @endforeach
                     </select>
                 </div>
+                <input type="hidden" name="profile[id]" value={{ $profile->id }}>
                 <input type="submit" value="決定"><br>
             </form>
         </div>
