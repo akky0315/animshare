@@ -35,10 +35,10 @@ Route::controller(AnimController::class)->group(function(){
     Route::get('/profiles/{profile}/anims/display', 'display')->name('anim.display');    //アニメ情報を確認する画面に遷移
     Route::get('/profiles/{profile}/anims/edit', 'edit')->name('anim.edit');   //アニメ情報を編集する画面に遷移
     Route::get('/profiles/{profile}/anims/select', 'select')->name('anim.select');   //視聴するアニメ情報の取得の仕方を選ぶ画面に遷移
-    Route::get('/profiles/{profile}/anims/select/random', 'random')->name('anim.random');   //
-    Route::post('/profiles/{profile}/anims', 'random2')->name('anim.random2');
-    Route::get('/profiles/{profile}/anims/{anim}/select/complete', 'complete')->name('anim.complete');
-    Route::get('/profiles/{profile}/history', 'history')->name('history');
+    Route::get('/profiles/{profile}/anims/select/random', 'random')->name('anim.random');   //他のユーザーが選んだアニメ情報を取得し表示する画面に遷移
+    Route::post('/profiles/{profile}/anims', 'random2')->name('anim.random2');   //新たにanim_profileレコードを作成してデータを渡し、保存
+    Route::get('/profiles/{profile}/anims/{anim}/select/complete', 'complete')->name('anim.complete');   //選んだアニメを表示する画面に遷移
+    Route::get('/profiles/{profile}/history', 'history')->name('history');   //選択履歴のデータをanim_profileテーブルから取得し表示する画面に遷移
 });
 
 
