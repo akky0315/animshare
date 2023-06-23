@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title', 100)->nullable();
             $table->foreignId('profile_id')->constrained("profiles");
             $table->integer("s_count")->default(0);
-            $table->boolean("judge")->default(false);
             $table->timestamps();
         });
     }
