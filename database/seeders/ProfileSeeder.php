@@ -16,10 +16,14 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('profiles')->insert([
-                'name' => '佐藤裕也',
+        for ($i = 1; $i < 11; $i++)
+        {
+            DB::table('profiles')->insert([
+            
+                'name' => 'Name'. $i,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
-        ]);
+            ]);
+        }
     }
 }
