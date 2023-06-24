@@ -9,7 +9,7 @@
     
     <body class="antialiased">
         <div class="content">
-            <form action="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}" method="POST">
+            <form action="/profiles/{{ $profile->id }}/anims/index" method="POST">
                 @csrf
                 <div class="content_animdatas">
                     <select name="animdata">

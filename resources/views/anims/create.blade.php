@@ -11,6 +11,7 @@
         <h1 class="title">アニメ作成</h1>
         <a type="hidden" value="{{ $count = 1 }}"></a>
         <div class="content">
+            @if ($profile_count->anims_count < 4)
             <form action="/profiles/{{ $profile->id }}/create" method="POST">
             @csrf
             <div class="content_anims">
@@ -22,8 +23,7 @@
                 @endforeach
             </div>
             @if($count < 4)
-                <input type="hidden" name="profile[id]" value={{ $profile->id }}>
-                <input type="submit" value="検索"></a>
+                <a href="/profiles/{{ $profile->id }}/anims/create/check">検索</a>
             @endif
             
             @if($count == 4)
@@ -32,6 +32,7 @@
             </div>
             @endif
             </form>
+            @endif
         </div>
     </body>
 </html>
