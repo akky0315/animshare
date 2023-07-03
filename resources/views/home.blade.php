@@ -21,7 +21,7 @@
             <a href="/profiles/{{ $profile->id }}/anims/select">選択<br></a>
         </div>
         <div class="footer">
-            <a href="/friend">フレンド<br></a>
+            <a href="/profiles/{{ $profile->id }}/friend">フレンド<br></a>
         </div>
         <div class="footer">
             <a href="/profiles/{{ $profile->id }}/history">選択履歴</a>

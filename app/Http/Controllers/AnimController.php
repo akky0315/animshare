@@ -14,7 +14,7 @@ class AnimController extends Controller
     public function create(Profile $profile)
     {
         $profile_count = Profile::withCount('anims')->where('id', $profile->id)->first();
-        return view('anims.create')->with(['profile' => $profile, 'anims' => $profile->getByProfile(), 'profile_count'=>$profile_count]);   //profileの主キーと一致する外部キーを持つanimレコードを取得
+        return view('anims.create')->with(['profile' => $profile, 'anims' => $profile->getByProfile(), 'profile_count' => $profile_count]);   //profileの主キーと一致する外部キーを持つanimレコードを取得
     }
     public function check(Profile $profile, Anim $anim)
     {
@@ -42,14 +42,50 @@ class AnimController extends Controller
     }
     public function insert(Profile $profile, Anim $anim, Request $request)
     {
-        $input_fk = $request['profile'];    //anims.createビューファイル内のnameタグ[profile_id]の値を取得
-        $input_anim = $request['animdata'];   //anims.indexビューファイル内のnameタグ[anim]の値を取得
-        $anim->title = $input_anim;   //取得した値をanimレコードのtitleカラムに格納
-        $anim->profile_id = $input_fk['id'];   // 取得した値をanimsテーブルのFKに格納
-        $anim->save();
-        
-        return redirect('profiles/' . $profile->id . '/anims/create');
+            $input_fk = $request['profile'];    //anims.createビューファイル内のnameタグ[profile_id]の値を取得
+            $input_anim = $request['animdata'];   //anims.indexビューファイル内のnameタグ[anim]の値を取得
+            $anim->title = $input_anim;   //取得した値をanimレコードのtitleカラムに格納
+            $anim->profile_id = $input_fk['id'];   // 取得した値をanimsテーブルのFKに格納
+            
+            $anim->save();
+
+            return redirect('profiles/' . $profile->id . '/anims/create');
     }
+    
+    public function check2(Profile $profile, Anim $anim)
+    {
+        return view('anims.check2')->with(['profile' => $profile, 'anim' => $anim]);
+    }
+    public function index2(Profile $profile, Anim $anim, AnimRequest $request)
+    {
+        $num = $request['num'];    //anims.checkビューファイル内のnameタグ[year_num]の値を取得
+            
+        $client = new \GuzzleHttp\Client();   //Http通信を行うパッケージのclientインスタンスを作成
+        $url = 'https://api.moemoe.tokyo/anime/v1/master/' . $num['year']  . '/' .  $num['cule'] ;   //作成されたURLを取得する
+        
+        $response = $client->request(    //リクエスト送信し返却データを取得
+            'GET',
+            $url,
+        );
+        
+        $animdatas = json_decode($response->getBody(), true);   //取得したデータをjson形式からPHPに対応した連想配列にデコードする
+        
+        return view('anims.index2')->with([
+            'animdatas' => $animdatas,
+            'profile' => $profile,
+            'anim' => $anim,
+        ]);
+    }
+    public function insert2(Profile $profile, Anim $anim, Request $request)
+    {
+            $input_anim = $request['animdata'];   //anims.indexビューファイル内のnameタグ[anim]の値を取得
+            $anim->title = $input_anim;   //取得した値をanimレコードのtitleカラムに格納
+            
+            $anim->save();
+
+            return redirect('profiles/' . $profile->id . '/anims/edit');
+    }
+    
     public function display(Profile $profile)
     {
         return view('anims.display')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);

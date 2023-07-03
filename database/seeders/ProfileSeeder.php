@@ -19,7 +19,6 @@ class ProfileSeeder extends Seeder
         for ($i = 1; $i < 11; $i++)
         {
             DB::table('profiles')->insert([
-            
                 'name' => 'Name'. $i,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),

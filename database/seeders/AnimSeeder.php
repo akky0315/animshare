@@ -16,14 +16,13 @@ class AnimSeeder extends Seeder
      */
     public function run()
     {
-        for ($p = 1; $p < 11; $p++)
+        for ($i = 1; $i < 11; $i++)
         {
-            for ($a = 0; $a < 3; $a++)
+            for ($j =1; $j < 4; $j++)
             {
                 DB::table('anims')->insert([
-                    
-                    'title' => 'Anim'. $p. $a,
-                    'profile_id' => $p,
+                    'title' => 'Anim'. $i. $j,
+                    'profile_id' => $i,
                     'created_at' => new DateTime(),
                     'updated_at' => new DateTime(),
                 ]);

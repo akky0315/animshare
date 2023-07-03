@@ -9,8 +9,9 @@
     
     <body class="antialiased">
         <div class="content">
-            <form action="/profiles/{{ $profile->id }}/anims/insert" method="POST">
+            <form action="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/insert" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="content_animdatas">
                     <select name="animdata">
                         @foreach($animdatas as $animdata)

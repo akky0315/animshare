@@ -19,7 +19,7 @@ class Profile extends Model
     }
     public function getByProfile()
     {
-        return $this->anims()->get();
+        return $this->anims()->orderBy('created_at', 'asc')->take(3)->get();
     }
     public function profileAnims()
     {
@@ -28,5 +28,17 @@ class Profile extends Model
     public function getByProfileAnims()
     {
         return $this->profileAnims()->get();
+    }
+    public function fromProfiles()
+    {
+        return $this->belongsToMany(Profile::class, 'friends', 'to_profile_id', 'from_profile_id');
+    }
+    public function getByFromProfile()
+    {
+        return $this->fromProfiles()->orderBy('id', 'asc')->get();
+    }
+    public function toProfiles()
+    {
+        return $this->belongsToMany(Profile::class, 'friends', 'from_profile_id', 'to_profile_id');
     }
 }
