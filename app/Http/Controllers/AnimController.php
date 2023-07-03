@@ -13,7 +13,7 @@ class AnimController extends Controller
 {
     public function create(Profile $profile)
     {
-         $profile_count = Profile::withCount('anims')->where('id', $profile->id)->first();
+        $profile_count = Profile::withCount('anims')->where('id', $profile->id)->first();
         return view('anims.create')->with(['profile' => $profile, 'anims' => $profile->getByProfile(), 'profile_count' => $profile_count]);   //profileの主キーと一致する外部キーを持つanimレコードを取得
     }
     public function check(Profile $profile, Anim $anim)
