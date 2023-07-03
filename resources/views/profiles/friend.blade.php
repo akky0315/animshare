@@ -10,8 +10,11 @@
     <body class="antialiased">
         <h1>フレンド一覧</h1>
         <div class="profile">
-            <h3 class='name'>名前：{{ $profile->name }}<br></h3>
-            <h3 class='id'>ID：{{ $profile->id }}</h3>
+            @csrf
+            @foreach ($friends as $friend)
+            <a class='name'>名前：{{ $friend->name }}</a>
+            <a class='id'>ID：{{ $friend->id }}</a><br>
+            @endforeach
         </div>
         <div class="footer">
             <a href="/profiles/{{ $profile->id }}/friend/add">新規追加</a>

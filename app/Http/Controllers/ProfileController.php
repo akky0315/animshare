@@ -47,7 +47,7 @@ class ProfileController extends Controller
     }
     public function friend(Profile $profile)
     {
-        return view('profiles.friend')->with(['profile' => $profile]);
+        return view('profiles.friend')->with(['profile' => $profile, 'friends' => $profile->getByFromProfile()]);
     }
     public function add(Profile $profile)
     {
@@ -55,20 +55,20 @@ class ProfileController extends Controller
     }
     public function add2(Profile $profile, Request $request)
     {
-        $input = $request['id'];
-        $profile_all = Profile::all();
-        $profile->fromProfiles()->attach($input);
+        $input_id = $request['id'];
         
-        return view('profiles.add2')->with(['profile' => $profile, 'to_profile' => $profile_all->find($input)]);
+        return redirect('profiles/'. $profile->id .'/friend/'. $input_id .'/answer');
     }
-    public function add3(Profile $profile, Request $request)
+    public function add3(Profile $profile, $profile2)
     {
-        $input_profile = $request['profile_id'];
-        $input_friend = $request['judge'];
-        $profile->fromProfiles()->sync([
-            $input_profile => ['status' => $input_friend],
-        ]);
+        $to_profile = Profile::find($profile2);
         
+        return view('profiles.add2')->with(['profile' => $profile, 'to_profile' => $to_profile]);
+    }
+    public function add4(Profile $profile, Request $request)
+    {
+        $input_id = $request['id'];
+        $profile->fromProfiles()->attach($input_id);
         
         return redirect('/profiles/'. $profile->id .'/friend');
     }

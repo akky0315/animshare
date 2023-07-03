@@ -14,13 +14,13 @@
                 @csrf
                 <div class="content_id">
                         ID:
-                        <input type="number" name="id" placeholder="1">
+                        <input type="number" name="id" placeholder="1" value="{{ old('profile.id') }}">
                 </div>
             <input type="submit" value="検索">
             </form>
         </div>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/home">戻る</a>
+            <a href="/profiles/{{ $profile->id }}/friend">戻る</a>
         </div>
     </body>
 </html>

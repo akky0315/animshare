@@ -10,7 +10,7 @@
     <body class="antialiased">
     <h1 class="title">アニメを年代とクールから検索しよう！</h1>
     <div class="content">
-        <form action="/profiles/{{ $profile->id }}/anims/create" method="POST">
+        <form action="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create" method="POST">
             @csrf
             <div class="content_year">
                 <a>年代：</a>
