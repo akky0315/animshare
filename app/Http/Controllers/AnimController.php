@@ -49,13 +49,14 @@ class AnimController extends Controller
     }
     public function insert(Profile $profile, Anim $anim, Request $request)
     {
-        $input_fk = $request['profile'];    //anims.createビューファイル内のnameタグ[profile_id]の値を取得
-        $input_anim = $request['animdata'];   //anims.indexビューファイル内のnameタグ[anim]の値を取得
-        $anim->title = $input_anim;   //取得した値をanimレコードのtitleカラムに格納
-        $anim->profile_id = $input_fk['id'];   // 取得した値をanimsテーブルのFKに格納
-        $anim->save();
-        
-        return redirect('profiles/' . $profile->id . '/anims/create');
+            $input_fk = $request['profile'];    //anims.createビューファイル内のnameタグ[profile_id]の値を取得
+            $input_anim = $request['animdata'];   //anims.indexビューファイル内のnameタグ[anim]の値を取得
+            $anim->title = $input_anim;   //取得した値をanimレコードのtitleカラムに格納
+            $anim->profile_id = $input_fk['id'];   // 取得した値をanimsテーブルのFKに格納
+            
+            $anim->save();
+
+            return redirect('profiles/' . $profile->id . '/anims/create');
     }
     public function display(Profile $profile)
     {

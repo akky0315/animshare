@@ -17,7 +17,7 @@
                 @foreach($anims as $anim)
                 <div class="content_anim">
                     <h3>アニメ{{ $count }}を変更</h3><br>
-                    <a href="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create/check">{{ $anim->title }}</a>
+                    <a href="/profiles/{{ $profile->id }}/anims/create/check">{{ $anim->title }}</a>
                 </div>
                 <a type="hidden" value="{{ $count++ }}"></a>
                 @endforeach

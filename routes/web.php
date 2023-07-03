@@ -23,7 +23,11 @@ Route::controller(ProfileController::class)->group(function(){
     Route::get('/profiles/{profile}/home', 'home')->name('home');   //ホーム画面に遷移
     Route::get('/profiles/{profile}', 'information')->name('profile.information');  //プロフィール情報を確認する画面に遷移
     Route::get('/profiles/{profile}/edit', 'edit')->name('profile.edit');   //プロフィール情報を編集する画面に遷移
-    Route::put('/profiles/{profile}', 'update')->name('profile.update');   //既存するprofilesテーブル内のレコードの内容を変更し、保存    
+    Route::put('/profiles/{profile}', 'update')->name('profile.update');   //既存するprofilesテーブル内のレコードの内容を変更し、保存
+    Route::get('/profiles/{profile}/friend', 'friend')->name('profile.friend');
+    Route::get('/profiles/{profile}/friend/add', 'add')->name('profile.add');
+    Route::post('/profiles/{profile}/friend/add', 'add2')->name('profile.add2');
+    Route::post('/profiles/{profile}/friend/add2', 'add3')->name('profile.add3');
 });
 
 Route::controller(AnimController::class)->group(function(){

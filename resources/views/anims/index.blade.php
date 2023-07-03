@@ -25,7 +25,7 @@
             </form>
         </div>
         <div class="footer">
-            <a href='/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create/check'>戻る</a>
+            <a href='/profiles/{{ $profile->id }}/anims/create/check'>戻る</a>
         </div>
     </body>
 </html>
