@@ -11,17 +11,10 @@ use App\Models\Profile_anim;
 
 class AnimController extends Controller
 {
-    public function get(Profile $profile, Anim $anim, Request $request)
-    {
-        $input_fk = $request['profile'];    //anims.createビューファイル内のnameタグ[profile_id]の値を取得
-        $anim->profile_id = $input_fk['id'];   // 取得した値をanimsテーブルのFKに格納
-        $anim->save();   //保存し、新たなレコードが作成される
-        
-        return redirect("/profiles/" . $profile->id . "/anims/" . $anim->id . "/create/check");
-    }
     public function create(Profile $profile)
     {
-        return view('anims.create')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);   //profileの主キーと一致する外部キーを持つanimレコードを取得
+         $profile_count = Profile::withCount('anims')->where('id', $profile->id)->first();
+        return view('anims.create')->with(['profile' => $profile, 'anims' => $profile->getByProfile(), 'profile_count' => $profile_count]);   //profileの主キーと一致する外部キーを持つanimレコードを取得
     }
     public function check(Profile $profile, Anim $anim)
     {
