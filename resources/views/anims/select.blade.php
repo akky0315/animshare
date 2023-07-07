@@ -11,7 +11,7 @@
         <h1 class="title">あなたが視聴するアニメを決めよう！</h1>
         <h3>フリーマッチ</h3>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/anims/select/free">フリー<br></a>
+            <a href="/profiles/{{ $profile->id }}/groups/create">フリー<br></a>
         </div>
         <h3>ランダムマッチ</h3>
         <div class="footer">
