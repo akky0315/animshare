@@ -12,8 +12,12 @@
         <div class="profile">
             @csrf
             @foreach ($friends as $friend)
-            <a class='name'>名前：{{ $friend->name }}</a>
-            <a class='id'>ID：{{ $friend->id }}</a><br>
+            <h3 class='id'>ID：{{ $friend->id }}</h3>
+            <h3 class='name'>名前：{{ $friend->name }}</h3>
+            <h3 class='id'>
+                参加中グループID：
+                <a href="groups/{{ $friend->group->id }}/guest">{{ $friend->group->name }}</a>
+            </h3><br>
             @endforeach
         </div>
         <div class="footer">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AnimController;
 use App\Http\Controllers\ProfileAnimController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,13 @@ Route::controller(AnimController::class)->group(function(){
     Route::post('/profiles/{profile}/anims', 'random2')->name('anim.random2');   //新たにanim_profileレコードを作成してデータを渡し、保存
     Route::get('/profiles/{profile}/anims/{anim}/select/complete', 'complete')->name('anim.complete');   //選んだアニメを表示する画面に遷移
     Route::get('/profiles/{profile}/history', 'history')->name('history');   //選択履歴のデータをanim_profileテーブルから取得し表示する画面に遷移
+});
+
+Route::controller(GroupController::class)->group(function(){
+    Route::get('/profiles/{profile}/groups/create', 'create')->name('group.create');
+    Route::get('/profiles/{profile}/groups/{group}/host', 'host')->name('group.host');
+    Route::post('/profiles/{profile}/groups/create', 'store')->name('group.store');
+    Route::post('/profiles/{profile}/groups/host', 'leave')->name('group.leave');
 });
 
 

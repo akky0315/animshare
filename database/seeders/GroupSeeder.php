@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 
-class ProfileSeeder extends Seeder
+class GroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +16,10 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i < 11; $i++)
-        {
-            DB::table('profiles')->insert([
-                'name' => 'Name'. $i,
+        DB::table('groups')->insert([
+                'name' => '全体',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
-                'group_id' => '1',
-            ]);
-        }
+        ]);
     }
 }

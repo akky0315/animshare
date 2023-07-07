@@ -11,6 +11,7 @@ class Profile extends Model
     
     protected $fillable = [
         'name',
+        'group_id',
     ];
     
     public function anims()
@@ -40,5 +41,9 @@ class Profile extends Model
     public function toProfiles()
     {
         return $this->belongsToMany(Profile::class, 'friends', 'from_profile_id', 'to_profile_id');
+    }
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 }

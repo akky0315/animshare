@@ -8,16 +8,16 @@
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <h1 class="title">プロフィール作成</h1>
+        <h1 class="title">
+            {{ $profile->name }}さんのグループ作成
+        </h1>
         <div class="content">
-            <form action="/profiles/create" method="POST">
+            <form action="/profiles/{{ $profile->id }}/groups/create" method="POST">
                 @csrf
                 <div class="content_name">
-                    <h2>名前</h2>
-                    <input type="text" name="profile[name]" placeholder="ニックネーム">
-                    <p class="name_error" style="color:red">{{ $errors->first('profile.name') }}</p>
+                    <h2>グループ名</h2>
+                    <input type="text" name="group[name]" placeholder="グループ名">
                 </div>
-                <input type="hidden" name="profile[group_id]" value="1">
                 <input type="submit" value="決定">
             </form>
         </div>
