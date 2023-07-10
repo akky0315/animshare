@@ -51,9 +51,11 @@ Route::controller(AnimController::class)->group(function(){
 
 Route::controller(GroupController::class)->group(function(){
     Route::get('/profiles/{profile}/groups/create', 'create')->name('group.create');
-    Route::get('/profiles/{profile}/groups/{group}/host', 'host')->name('group.host');
+    Route::get('/profiles/{profile}/groups/{group}', 'host')->name('group.host');
     Route::post('/profiles/{profile}/groups/create', 'store')->name('group.store');
-    Route::post('/profiles/{profile}/groups/host', 'leave')->name('group.leave');
+    Route::post('/profiles/{profile}/groups/leave', 'leave')->name('group.leave');
+    Route::post('/profiles/{profile}/groups/{group}/preparate', 'preparate')->name('preparate');
+    Route::put('/profiles/{profile}/groups/add', 'add')->name('group.add');
 });
 
 

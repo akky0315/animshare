@@ -15,8 +15,13 @@
             <h3 class='id'>ID：{{ $friend->id }}</h3>
             <h3 class='name'>名前：{{ $friend->name }}</h3>
             <h3 class='id'>
-                参加中グループID：
-                <a href="groups/{{ $friend->group->id }}/guest">{{ $friend->group->name }}</a>
+                参加中グループ：{{ $friend->group->name }}
+                <form action="/profiles/{{ $profile->id }}/groups/add" method="POST">
+                    @csrf
+                    @method("PUT")
+                    <input type="hidden" name="profile[group_id]" value={{ $friend->group->id }}>
+                    <input type="submit" value="参加">
+                </form>
             </h3><br>
             @endforeach
         </div>
