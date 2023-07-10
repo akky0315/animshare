@@ -8,18 +8,45 @@
     </head>
     
     <body class="antialiased">
-        <form action="/profiles/{{ $profile->id }}/groups/host" method="POST">
-        @csrf
-        <h1>{{ $profile->group->name }}</h1>
-            @foreach($profiles as $profile)
-                    <h3 class='name'>
-                        名前：{{ $profile->name }}
-                    </h3>
-            @endforeach
-            <div class="footer">
-                <input type="hidden" name="profile[group_id]" value="1">
-                <input type="submit" value="退出">
-            </div>
-        </form>
+        <h1>{{ $my_profile->group->name }}</h1>
+        @foreach($profiles as $profile)
+            <h3 class='name'>
+                名前：{{ $profile->name }}
+                @if($profile->preparate === 0)
+                    準備中
+                @else
+                    準備完了
+                @endif
+            </h3>
+            @if($profile->id === $my_profile->id)
+                <form action="/profiles/{{ $my_profile->id }}/groups/{{ $group->id }}/preparate" method="POST">
+                    @csrf
+                    @if($profile->preparate === 0)
+                        <div class="footer">
+                            <input type="hidden" name="profile[preparate]" value="1">
+                            <input type="hidden" name="count" value="1">
+                            <input type="submit" value="準備完了">
+                        </div>
+                    @else
+                        <div class="footer">
+                            <input type="hidden" name="profile[preparate]" value="0">
+                            <input type="hidden" name="count" value="-1">
+                            <input type="submit" value="再準備">
+                        </div>
+                    @endif
+                </form>
+                <form action="/profiles/{{ $my_profile->id }}/groups/leave" method="POST">
+                    @csrf
+                    <div class="footer">
+                        <input type="hidden" name="profile[preparate]" value="0">
+                        <input type="hidden" name="profile[group_id]" value="1">
+                        <input type="submit" value="退出">
+                    </div>
+                </form>
+            @endif
+        @endforeach
+        @if($count["profiles_count"] === $count["g_count"])
+            <a href="profile/{{ $my_profile->id }}/groups/match">開始</a>
+        @endif
     </body>
 </html>
