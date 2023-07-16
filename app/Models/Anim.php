@@ -16,7 +16,11 @@ class Anim extends Model
         
     public function profile()
     {
-        return $this->belongTo(Profile::class);
+        return $this->belongsTo(Profile::class);
+    }
+    public function getByProfile()
+    {
+        return $this->profile()->get();
     }
     public function profileAnims()
     {

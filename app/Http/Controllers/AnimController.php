@@ -16,9 +16,13 @@ class AnimController extends Controller
         $profile_count = Profile::withCount('anims')->where('id', $profile->id)->first();
         return view('anims.create')->with(['profile' => $profile, 'anims' => $profile->getByProfile(), 'profile_count' => $profile_count]);   //profileの主キーと一致する外部キーを持つanimレコードを取得
     }
-    public function check(Profile $profile, Anim $anim)
+    public function c_select(Profile $profile)
     {
-        return view('anims.check')->with(['profile' => $profile, 'anim' => $anim]);
+        return view('anims.c_select')->with(['profile' => $profile]);
+    }
+    public function check(Profile $profile)
+    {
+        return view('anims.check')->with(['profile' => $profile]);
     }
     public function index(Profile $profile, Anim $anim, AnimRequest $request)
     {
@@ -51,7 +55,10 @@ class AnimController extends Controller
 
             return redirect('profiles/' . $profile->id . '/anims/create');
     }
-    
+    public function input(Profile $profile)
+    {
+        return view('anims.input')->with(['profile' => $profile]);
+    }
     public function check2(Profile $profile, Anim $anim)
     {
         return view('anims.check2')->with(['profile' => $profile, 'anim' => $anim]);

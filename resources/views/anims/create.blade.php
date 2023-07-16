@@ -22,7 +22,7 @@
                 <a type="hidden" value="{{ $count++ }}"></a>
                 @endforeach
             </div>
-            <a href="/profiles/{{ $profile->id }}/anims/create/check">検索</a>
+            <a href="/profiles/{{ $profile->id }}/anims/create/check/select">選択</a>
             @endif
             
             @if($profile_count->anims_count >= 3)
