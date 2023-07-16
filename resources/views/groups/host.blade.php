@@ -30,7 +30,9 @@
                     @else
                         <div class="footer">
                             <input type="hidden" name="profile[preparate]" value="0">
-                            <input type="hidden" name="count" value="-1">
+                            @if($group->g_count > 0)
+                                <input type="hidden" name="count" value="-1">
+                            @endif
                             <input type="submit" value="再準備">
                         </div>
                     @endif
@@ -46,7 +48,7 @@
             @endif
         @endforeach
         @if($count["profiles_count"] === $count["g_count"])
-            <a href="profile/{{ $my_profile->id }}/groups/match">開始</a>
+            <a href="/profiles/{{ $my_profile->id }}/groups/{{ $group->id }}/match/check">開始</a>
         @endif
     </body>
 </html>

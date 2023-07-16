@@ -34,6 +34,8 @@ Route::controller(ProfileController::class)->group(function(){
 
 Route::controller(AnimController::class)->group(function(){
     Route::get('/profiles/{profile}/anims/create', 'create')->name('anim.create');   //アニメ作成画面に遷移
+    Route::get('/profiles/{profile}/anims/create/check/select', 'c_select')->name('anim.c_select');
+    Route::get('/profiles/{profile}/anims/create/input', 'input')->name('anim.input');
     Route::get('/profiles/{profile}/anims/create/check', 'check')->name('anim.check');   //APIでアニメを検索するための情報を入力する画面に遷移
     Route::post('/profiles/{profile}/anims/create', 'index')->name('anim.index');   //入力されたデータをAPIに渡し、アニメデータを取得
     Route::post('/profiles/{profile}/anims/insert', 'insert')->name('anim.insert');   //animsテーブルに新たなレコードに情報を渡し、作成
@@ -50,6 +52,8 @@ Route::controller(AnimController::class)->group(function(){
 });
 
 Route::controller(GroupController::class)->group(function(){
+    Route::get('/profiles/{profile}/groups/{group}/match', 'match')->name('group.match');
+    Route::get('/profiles/{profile}/groups/{group}/match/check', 'm_check')->name('group.match');
     Route::get('/profiles/{profile}/groups/create', 'create')->name('group.create');
     Route::get('/profiles/{profile}/groups/{group}', 'host')->name('group.host');
     Route::post('/profiles/{profile}/groups/create', 'store')->name('group.store');
