@@ -41,9 +41,11 @@ Route::controller(AnimController::class)->group(function(){
     Route::post('/profiles/{profile}/anims/insert', 'insert')->name('anim.insert');   //animsテーブルに新たなレコードに情報を渡し、作成
     Route::get('/profiles/{profile}/anims/display', 'display')->name('anim.display');    //アニメ情報を確認する画面に遷移
     Route::get('/profiles/{profile}/anims/edit', 'edit')->name('anim.edit');   //アニメ情報を編集する画面に遷移
-    Route::get('/profiles/{profile}/anims/{anim}/create/check', 'check2')->name('anim.check2');   //APIでアニメを検索するための情報を入力する画面に遷移
-    Route::post('/profiles/{profile}/anims/{anim}/create', 'index2')->name('anim.index2');   //入力されたデータをAPIに渡し、アニメデータを取得
-    Route::put('/profiles/{profile}/anims/{anim}/insert', 'insert2')->name('anim.insert2');   //既存のanimsテーブル内のレコードにデータを渡し、保存
+    Route::get('/profiles/{profile}/anims/edit/create/check/select', 'c_select2')->name('anim.c_select');
+    Route::get('/profiles/{profile}/anims/edit/create/input', 'input2')->name('anim.input');
+    Route::get('/profiles/{profile}/anims/edit/create/check', 'check2')->name('anim.check2');   //APIでアニメを検索するための情報を入力する画面に遷移
+    Route::post('/profiles/{profile}/anims/edit/create', 'index2')->name('anim.index2');   //入力されたデータをAPIに渡し、アニメデータを取得
+    Route::post('/profiles/{profile}/anims/edit/insert', 'insert2')->name('anim.insert2');   //既存のanimsテーブル内のレコードにデータを渡し、保存
     Route::get('/profiles/{profile}/anims/select', 'select')->name('anim.select');   //視聴するアニメ情報の取得の仕方を選ぶ画面に遷移
     Route::get('/profiles/{profile}/anims/select/random', 'random')->name('anim.random');   //他のユーザーが選んだアニメ情報を取得し表示する画面に遷移
     Route::post('/profiles/{profile}/anims', 'random2')->name('anim.random2');   //新たにanim_profileレコードを作成してデータを渡し、保存
@@ -52,14 +54,16 @@ Route::controller(AnimController::class)->group(function(){
 });
 
 Route::controller(GroupController::class)->group(function(){
+    Route::get('/profiles/{profile}/groups/create', 'create')->name('group.create');
     Route::get('/profiles/{profile}/groups/{group}/match', 'match')->name('group.match');
     Route::get('/profiles/{profile}/groups/{group}/match/check', 'm_check')->name('group.match');
-    Route::get('/profiles/{profile}/groups/create', 'create')->name('group.create');
     Route::get('/profiles/{profile}/groups/{group}', 'host')->name('group.host');
     Route::post('/profiles/{profile}/groups/create', 'store')->name('group.store');
     Route::post('/profiles/{profile}/groups/leave', 'leave')->name('group.leave');
     Route::post('/profiles/{profile}/groups/{group}/preparate', 'preparate')->name('preparate');
     Route::put('/profiles/{profile}/groups/add', 'add')->name('group.add');
+    Route::post('/profiles/{profile}/groups', 'match2')->name('group.match2');   //新たにanim_profileレコードを作成してデータを渡し、保存
+    
 });
 
 
