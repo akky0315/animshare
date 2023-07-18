@@ -6,6 +6,7 @@ use App\Http\Requests\AnimRequest;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\Anim;
+use App\Models\Group;
 use Illuminate\Support\Facades\DB;
 use App\Models\Profile_anim;
 
@@ -29,7 +30,7 @@ class AnimController extends Controller
         $num = $request['num'];    //anims.checkビューファイル内のnameタグ[year_num]の値を取得
             
         $client = new \GuzzleHttp\Client();   //Http通信を行うパッケージのclientインスタンスを作成
-        $url = 'https://api.moemoe.tokyo/anime/v1/master/' . $num['year']  . '/' .  $num['cule'] ;   //作成されたURLを取得する
+        $url = 'https://anime-api.deno.dev/anime/v1/master/' . $num['year']  . '/' .  $num['cule'];   //作成されたURLを取得する
         
         $response = $client->request(    //リクエスト送信し返却データを取得
             'GET',
@@ -59,6 +60,10 @@ class AnimController extends Controller
     {
         return view('anims.input')->with(['profile' => $profile]);
     }
+    public function c_select2(Profile $profile, Anim $anim)
+    {
+        return view('anims.c_select2')->with(['profile' => $profile, 'anim' => $anim]);
+    }
     public function check2(Profile $profile, Anim $anim)
     {
         return view('anims.check2')->with(['profile' => $profile, 'anim' => $anim]);
@@ -68,7 +73,7 @@ class AnimController extends Controller
         $num = $request['num'];    //anims.checkビューファイル内のnameタグ[year_num]の値を取得
             
         $client = new \GuzzleHttp\Client();   //Http通信を行うパッケージのclientインスタンスを作成
-        $url = 'https://api.moemoe.tokyo/anime/v1/master/' . $num['year']  . '/' .  $num['cule'] ;   //作成されたURLを取得する
+        $url = 'https://anime-api.deno.dev/anime/v1/master/' . $num['year']  . '/' .  $num['cule'];   //作成されたURLを取得する
         
         $response = $client->request(    //リクエスト送信し返却データを取得
             'GET',
@@ -85,14 +90,19 @@ class AnimController extends Controller
     }
     public function insert2(Profile $profile, Anim $anim, Request $request)
     {
+            $input_fk = $request['profile'];    //anims.createビューファイル内のnameタグ[profile_id]の値を取得
             $input_anim = $request['animdata'];   //anims.indexビューファイル内のnameタグ[anim]の値を取得
             $anim->title = $input_anim;   //取得した値をanimレコードのtitleカラムに格納
+            $anim->profile_id = $input_fk['id'];   // 取得した値をanimsテーブルのFKに格納
             
             $anim->save();
 
             return redirect('profiles/' . $profile->id . '/anims/edit');
     }
-    
+    public function input2(Profile $profile, Anim $anim)
+    {
+        return view('anims.input2')->with(['profile' => $profile, 'anim' => $anim]);
+    }
     public function display(Profile $profile)
     {
         return view('anims.display')->with(['profile' => $profile, 'anims' => $profile->getByProfile()]);

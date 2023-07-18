@@ -11,11 +11,14 @@
         <h1 class="title">アニメ選ぶための方法を決めよう！</h1>
         <h3>検索</h3>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/anims/create/check">検索<br></a>
+            <a href="/profiles/{{ $profile->id }}/anims/edit/create/check">検索<br></a>
         </div>
         <h3>入力</h3>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/anims/create/input">入力<br></a>
+            <a href="/profiles/{{ $profile->id }}/anims/edit/create/input">入力<br></a>
+        </div>
+        <div class="footer">
+            <a href='/profiles/{{ $profile->id }}/anims/edit'>戻る</a>
         </div>
     </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <title>Animshare</title>
         <!-- Fonts -->
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>

@@ -16,12 +16,14 @@
             <h3 class='name'>名前：{{ $friend->name }}</h3>
             <h3 class='id'>
                 参加中グループ：{{ $friend->group->name }}
+                @if($friend->group->id !== 1)
                 <form action="/profiles/{{ $profile->id }}/groups/add" method="POST">
                     @csrf
                     @method("PUT")
                     <input type="hidden" name="profile[group_id]" value={{ $friend->group->id }}>
                     <input type="submit" value="参加">
                 </form>
+                @endif
             </h3><br>
             @endforeach
         </div>

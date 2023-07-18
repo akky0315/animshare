@@ -20,7 +20,7 @@ class Profile extends Model
     }
     public function getByProfile()
     {
-        return $this->anims()->orderBy('created_at', 'asc')->take(3)->get();
+        return $this->anims()->orderBy('created_at', 'desc')->take(3)->get();
     }
     public function profileAnims()
     {

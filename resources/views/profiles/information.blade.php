@@ -12,10 +12,6 @@
         <div class="profile">
             <h3 class='name'>名前：{{ $profile->name }}<br></h3>
             <h3 class='id'>ID：{{ $profile->id }}</h3>
-            <h3 class='id'>
-                参加中グループID：
-                <a href="/profiles/{{ $profile->id }}/groups/{{ $profile->group->id }}/host">{{ $profile->group->name }}</a>
-            </h3><br>
         </div>
         <div class="footer">
             <a href="/profiles/{{ $profile->id }}/edit">編集</a>

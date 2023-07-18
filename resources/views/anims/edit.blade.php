@@ -8,24 +8,19 @@
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <h1 class="title">アニメ作成</h1>
+        <h1 class="title">アニメ編集</h1>
         <a type="hidden" value="{{ $count = 1 }}"></a>
-        <div class="content">
-            <form action="/profiles/{{ $profile->id }}/edit" method="POST">
-            @csrf
-            <div class="content_anims">
-                @foreach($anims as $anim)
-                <div class="content_anim">
-                    <h3>アニメ{{ $count }}を変更</h3><br>
-                    <a href="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/create/check">{{ $anim->title }}</a>
-                </div>
-                <a type="hidden" value="{{ $count++ }}"></a>
-                @endforeach
+        <div class="anims">
+            @foreach($anims as $anim)
+            <div class="anim">
+                <h3>アニメ{{ $count }}：{{ $anim->title }}</h3>
             </div>
-            </form>
+            <a type="hidden" value="{{ $count++ }}"></a>
+            @endforeach
         </div>
+        <a href="/profiles/{{ $profile->id }}/anims/edit/create/check/select">変更</a>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+            <a href="/profiles/{{ $profile->id }}/anims/display">戻る</a>
         </div>
     </body>
 </html>

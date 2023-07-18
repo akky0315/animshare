@@ -9,9 +9,8 @@
     
     <body class="antialiased">
         <div class="content">
-            <form action="/profiles/{{ $profile->id }}/anims/{{ $anim->id }}/insert" method="POST">
+            <form action="/profiles/{{ $profile->id }}/anims/edit/insert" method="POST">
                 @csrf
-                @method('PUT')
                 <div class="content_animdatas">
                     <select name="animdata">
                         @foreach($animdatas as $animdata)
@@ -26,7 +25,7 @@
             </form>
         </div>
         <div class="footer">
-            <a href='/profiles/{{ $profile->id }}/anims/create/check'>戻る</a>
+            <a href='/profiles/{{ $profile->id }}/anims/edit/create/check/select'>戻る</a>
         </div>
     </body>
 </html>
