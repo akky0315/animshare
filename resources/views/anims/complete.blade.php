@@ -16,7 +16,7 @@
             <a href="/profiles/{{ $profile->id }}/history">選択履歴</a>
         </div>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+            <a href="/home">ホームへ</a>
         </div>
     </body>
 </html>

@@ -9,7 +9,6 @@
     </head>
     <body class="antialiased">
         <h1 class="title">アニメ作成</h1>
-        <a type="hidden" value="{{ $count = 1 }}"></a>
         <div class="content">
             @if ($profile_count->anims_count < 3)
             <form action="/profiles/{{ $profile->id }}/create" method="POST">
@@ -17,9 +16,8 @@
             <div class="content_anims">
                 @foreach($anims as $anim)
                 <div class="anim">
-                    <h3>アニメ{{ $count }} : {{ $anim->title }}</h3>
+                    <h3>アニメ名 : {{ $anim->title }}</h3>
                 </div>
-                <a type="hidden" value="{{ $count++ }}"></a>
                 @endforeach
             </div>
             <a href="/profiles/{{ $profile->id }}/anims/create/check/select">選択</a>
@@ -29,9 +27,8 @@
             <div class="anims">
                 @foreach($anims as $anim)
                 <div class="anim">
-                    <h3>アニメ{{ $count }} : {{ $anim->title }}</h3>
+                    <h3>アニメ名 : {{ $anim->title }}</h3>
                 </div>
-                <a type="hidden" value="{{ $count++ }}"></a>
                 @endforeach
             </div>
             <div class="footer">

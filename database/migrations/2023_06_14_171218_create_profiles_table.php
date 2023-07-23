@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->integer('g_num')->default(0);
+            $table->foreignId('user_id')->constrained("profiles");
+            $table->integer('password');
             $table->timestamps();
         });
     }

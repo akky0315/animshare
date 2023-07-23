@@ -18,7 +18,7 @@
                 @endforeach
         </div>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+            <a href="/home">ホームへ</a>
         </div>
     </body>
 </html>

@@ -13,9 +13,12 @@
         <div class="anims">
             @foreach($anims as $anim)
             <div class="anim">
-                <h3>アニメ{{ $count }}：{{ $anim->title }}</h3>
+                <h3>アニメ名：{{ $anim->title }}</h3>
             </div>
             <a type="hidden" value="{{ $count++ }}"></a>
+            @if($count === 4)
+                <h3>次変更になるアニメ：{{ $anim->title }}</h3>
+            @endif
             @endforeach
         </div>
         <a href="/profiles/{{ $profile->id }}/anims/edit/create/check/select">変更</a>

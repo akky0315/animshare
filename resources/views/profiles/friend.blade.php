@@ -43,7 +43,7 @@
             <a href="/profiles/{{ $profile->id }}/friend/add">新規追加</a>
         </div>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+            <a href="/home">ホームへ</a>
         </div>
     </body>
 </html>
