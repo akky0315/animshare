@@ -13,7 +13,7 @@
         <form action"profiles/{{ $profile->id }}/friend/{{ $to_profile->id }}/answer" method="POST">
             @csrf
             {{ $to_profile->name }}
-            <input type="hidden" name=id value="{{ $to_profile->id }}">
+            <input type="hidden" name="id" value="{{ $to_profile->id }}">
             <input type="submit" value="追加">
         </form>
         </div>

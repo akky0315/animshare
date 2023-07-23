@@ -32,7 +32,7 @@ class Profile extends Model
     }
     public function fromProfiles()
     {
-        return $this->belongsToMany(Profile::class, 'friends', 'to_profile_id', 'from_profile_id');
+        return $this->belongsToMany(Profile::class, 'friends', 'to_profile_id', 'from_profile_id')->withPivot('approval');
     }
     public function getByFromProfile()
     {
@@ -40,7 +40,11 @@ class Profile extends Model
     }
     public function toProfiles()
     {
-        return $this->belongsToMany(Profile::class, 'friends', 'from_profile_id', 'to_profile_id');
+        return $this->belongsToMany(Profile::class, 'friends', 'from_profile_id', 'to_profile_id')->withPivot('approval');
+    }
+     public function getByToProfile()
+    {
+        return $this->toProfiles()->orderBy('id', 'asc')->get();
     }
     public function group()
     {

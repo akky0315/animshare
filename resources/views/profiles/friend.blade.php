@@ -12,20 +12,32 @@
         <div class="profile">
             @csrf
             @foreach ($friends as $friend)
-            <h3 class='id'>ID：{{ $friend->id }}</h3>
-            <h3 class='name'>名前：{{ $friend->name }}</h3>
-            <h3 class='id'>
-                参加中グループ：{{ $friend->group->name }}
-                @if($friend->group->id !== 1)
-                <form action="/profiles/{{ $profile->id }}/groups/add" method="POST">
-                    @csrf
-                    @method("PUT")
-                    <input type="hidden" name="profile[group_id]" value={{ $friend->group->id }}>
-                    <input type="submit" value="参加">
-                </form>
+                @if ($friend->pivot->approval === 1)
+                    <h3 class='id'>ID：{{ $friend->id }}</h3>
+                    <h3 class='name'>名前：{{ $friend->name }}</h3>
+                    <h3 class='id'>
+                        参加中グループ：{{ $friend->group->name }}
+                        @if($friend->group->id !== 1)
+                            <form action="/profiles/{{ $profile->id }}/groups/add" method="POST">
+                                @csrf
+                                @method("PUT")
+                                <input type="hidden" name="profile[group_id]" value={{ $friend->group->id }}>
+                                <input type="submit" value="参加">
+                            </form>
+                        @endif
+                        <form action="/profiles/{{ $profile->id }}/{{ $friend->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="削除">
+                        </form>
+                    </h3>
                 @endif
-            </h3><br>
             @endforeach
+        </div><div class="footer">
+            <a href="/profiles/{{ $profile->id }}/friend/wait">承認待ち</a>
+        </div>
+        <div class="footer">
+            <a href="/profiles/{{ $profile->id }}/friend/approval">未承認</a>
         </div>
         <div class="footer">
             <a href="/profiles/{{ $profile->id }}/friend/add">新規追加</a>

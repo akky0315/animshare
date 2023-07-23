@@ -125,9 +125,12 @@ class AnimController extends Controller
         
         return view('anims.random')->with(['profile' => $profile, 'to_profile' => $to_profile, 'anims' => $to_profile->getByProfile()]);   //受け取ったprofileのidを外部キーにもつanimレコードを取得
     }
-    public function random2(Profile $profile, Request $request)
+    public function random2(Profile $profile, Anim $anim, Request $request)
     {
         $input_anims = $request['id'];   //選択したanimデータを取得
+        $anim = Anim::where('id', $input_anims)->first();
+        $anim->s_count = $anim->s_count + 1;
+        $anim->save();
             
         $profile->profileAnims()->attach($input_anims);   //attachメソッドを使って中間テーブルにデータを保存
         
