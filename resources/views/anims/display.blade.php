@@ -14,6 +14,7 @@
             @foreach($anims as $anim)
             <div class="anim">
                 <h3>アニメ{{ $count }} : {{ $anim->title }}</h3>
+                <h3>選択された回数：{{ $anim->s_count }}</h3>
             </div>
             <a type="hidden" value="{{ $count++ }}"></a>
             @endforeach

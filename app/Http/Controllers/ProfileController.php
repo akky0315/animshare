@@ -47,7 +47,9 @@ class ProfileController extends Controller
     }
     public function friend(Profile $profile)
     {
-        return view('profiles.friend')->with(['profile' => $profile, 'friends' => $profile->getByFromProfile()]);
+        $friends = $profile->getByFromProfile();
+        
+        return view('profiles.friend')->with(['profile' => $profile, 'friends' => $friends]);
     }
     public function add(Profile $profile)
     {
@@ -68,8 +70,33 @@ class ProfileController extends Controller
     public function add4(Profile $profile, Request $request)
     {
         $input_id = $request['id'];
-        $profile->fromProfiles()->attach($input_id);
+        $profile->toProfiles()->attach($input_id, ['approval' => '0']);
         
         return redirect('/profiles/'. $profile->id .'/friend');
+    }
+    public function delete(Profile $profile, $profile2)
+    {
+        $profile->fromProfiles()->detach($profile2);
+        $profile->toProfiles()->detach($profile2);
+        
+        return redirect('/profiles/'. $profile->id .'/friend');
+    }
+    public function approval(Profile $profile)
+    {
+        return view('profiles.approval')->with(['profile' => $profile, 'waitees' => $profile->getByFromProfile()]);
+    }
+    public function approval2(Profile $profile, Request $request)
+    {
+        $input_id = $request['id'];
+        $profile->fromProfiles()->detach($input_id);
+        $input_judge = $request['true'];
+        $profile->fromProfiles()->attach($input_id, ['approval' => $input_judge]);
+        $profile->toProfiles()->attach($input_id, ['approval' => $input_judge]);
+        
+        return redirect('/profiles/'. $profile->id .'/friend');
+    }
+    public function wait(Profile $profile)
+    {
+        return view('profiles.wait')->with(['profile' => $profile, 'waiters' => $profile->getByToProfile()]);
     }
 }

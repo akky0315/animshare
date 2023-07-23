@@ -96,6 +96,7 @@ class GroupController extends Controller
                 if($m_profiles[$j_count] === $profiles[$j_count]->id)
                 {
                     $judge = true;
+                    break;
                 }
                 $j_count++;
             }
@@ -112,13 +113,16 @@ class GroupController extends Controller
         
         return view('groups.match')->with(['profile' => $profile, 'to_profile' => $to_profile, 'anims' => $to_profile->getByProfile()]);   //受け取ったprofileのidを外部キーにもつanimレコードを取得
     }
-     public function match2(Profile $profile, Request $request)
+     public function match2(Profile $profile, Anim $anim, Request $request)
     {
         $profile->group_id = 1;
         $profile->preparate = 0;
         $profile->save();
         
         $input_anims = $request['id'];   //選択したanimデータを取得
+        $anim = Anim::where('id', $input_anims)->first();
+        $anim->s_count = $anim->s_count + 1;
+        $anim->save();
             
         $profile->profileAnims()->attach($input_anims);   //attachメソッドを使って中間テーブルにデータを保存
         

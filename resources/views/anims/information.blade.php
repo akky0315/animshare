@@ -12,7 +12,7 @@
         <div class="anims">
             @foreach($anims as $anim)
             <div class="anim">
-                <h3 class='anim'>アニメ：{{ $anim->title }}<br></h3>
+                <h3 class='anim'>アニメ：{{ $anim->title }}</h3>
             </div>
             @endforeach
         </div>
