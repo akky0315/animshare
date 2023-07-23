@@ -10,7 +10,7 @@
     <body class="antialiased">
         <h1>検索結果</h1>
         <div class="content">
-        <form action"profiles/{{ $profile->id }}/friend/{{ $to_profile->id }}/answer" method="POST">
+        <form action"profiles/{{ $profile->id }}/friend/{{ $to_profile->id }}" method="POST">
             @csrf
             {{ $to_profile->name }}
             <input type="hidden" name="id" value="{{ $to_profile->id }}">

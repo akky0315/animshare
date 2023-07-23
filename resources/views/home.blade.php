@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-app-layout>
     <head>
         <meta charset="utf-8">
         <title>Animshare</title>
@@ -27,4 +28,5 @@
             <a href="/profiles/{{ $profile->id }}/history">選択履歴</a>
         </div>
     </body>
+</x-app-layout>
 </html>

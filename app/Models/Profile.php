@@ -14,6 +14,10 @@ class Profile extends Model
         'group_id',
     ];
     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function anims()
     {
         return $this->hasMany(Anim::class);

@@ -12,31 +12,46 @@ use App\Http\Controllers\GroupController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::controller(ProfileController::class)->group(function(){
-    Route::get('/', 'welcome')->name('welcome');    //ログイン後画面に遷移
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::controller(ProfileController::class)->middleware('auth')->group(function(){
+    Route::get('/dashboard', 'welcome2')->name('app_welcome');    //ログイン後画面に遷移
     Route::get('/profiles/create', 'create')->name('profile.create');   //プロフィール作成画面に遷移
     Route::get('/profiles/{profile}/complete', 'complete')->name('profile.complete');   //プロフィール作成完了画面に遷移
     Route::post('/profiles/create', 'store')->name('profile.store');   //profilesテーブルに新たなレコード情報を渡し、作成
-    Route::get('/profiles/{profile}/home', 'home')->name('home');   //ホーム画面に遷移
+    Route::get('/home', 'home')->name('home');   //ホーム画面に遷移
     Route::get('/profiles/{profile}', 'information')->name('profile.information');  //プロフィール情報を確認する画面に遷移
-    Route::get('/profiles/{profile}/edit', 'edit')->name('profile.edit');   //プロフィール情報を編集する画面に遷移
-    Route::put('/profiles/{profile}', 'update')->name('profile.update');   //既存するprofilesテーブル内のレコードの内容を変更し、保存
+    Route::get('/profiles/{profile}/edit', 'edit2')->name('profile.edit2');   //プロフィール情報を編集する画面に遷移
+    Route::put('/profiles/{profile}', 'update2')->name('profile.update2');   //既存するprofilesテーブル内のレコードの内容を変更し、保存
     Route::get('/profiles/{profile}/friend/approval', 'approval');
     Route::post('/profiles/{profile}/friend/approval', 'approval2');
     Route::get('/profiles/{profile}/friend/wait', 'wait');
     Route::get('/profiles/{profile}/friend', 'friend')->name('profile.friend');
     Route::get('/profiles/{profile}/friend/add', 'add')->name('profile.add');
     Route::post('/profiles/{profile}/friend/add', 'add2')->name('profile.add2');
-    Route::get('/profiles/{profile}/friend/{profile2}/answer', 'add3')->name('profile.add3');
-    Route::post('/profiles/{profile}/friend/{profile2}/answer', 'add4')->name('profile.add4');
+    Route::get('/profiles/{profile}/friend/{to_profile}', 'add3')->name('profile.add3');
+    Route::post('/profiles/{profile}/friend/{to_profile}', 'add4')->name('profile.add4');
     Route::delete('/profiles/{profile}/{profile2}', 'delete');
 });
 
-Route::controller(AnimController::class)->group(function(){
+Route::controller(AnimController::class)->middleware('auth')->group(function(){
     Route::get('/profiles/{profile}/anims/create', 'create')->name('anim.create');   //アニメ作成画面に遷移
     Route::get('/profiles/{profile}/anims/create/check/select', 'c_select')->name('anim.c_select');
     Route::get('/profiles/{profile}/anims/create/input', 'input')->name('anim.input');
@@ -57,7 +72,7 @@ Route::controller(AnimController::class)->group(function(){
     Route::get('/profiles/{profile}/history', 'history')->name('history');   //選択履歴のデータをanim_profileテーブルから取得し表示する画面に遷移
 });
 
-Route::controller(GroupController::class)->group(function(){
+Route::controller(GroupController::class)->middleware('auth')->group(function(){
     Route::get('/profiles/{profile}/groups/create', 'create')->name('group.create');
     Route::get('/profiles/{profile}/groups/{group}/match', 'match')->name('group.match');
     Route::get('/profiles/{profile}/groups/{group}/match/check', 'm_check')->name('group.match');
@@ -69,4 +84,4 @@ Route::controller(GroupController::class)->group(function(){
     Route::post('/profiles/{profile}/groups', 'match2')->name('group.match2');   //新たにanim_profileレコードを作成してデータを渡し、保存
 });
 
-
+require __DIR__.'/auth.php';

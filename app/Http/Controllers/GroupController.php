@@ -35,7 +35,7 @@ class GroupController extends Controller
         $profile->group_id = $input['group_id'];
         $profile->save();
         
-        return redirect('/profiles/'. $profile->id .'/home');
+        return redirect('/home');
     }
     public function preparate(Profile $profile, Group $group, Request $request)
     {

@@ -9,21 +9,19 @@
     
     <body class="antialiased">
         <h1 class='title'>あなたのおすすめアニメ<br></h1>
-        <a type="hidden" value="{{ $count = 1 }}"></a>
         <div class="anims">
             @foreach($anims as $anim)
             <div class="anim">
-                <h3>アニメ{{ $count }} : {{ $anim->title }}</h3>
+                <h3>アニメ名 : {{ $anim->title }}</h3>
                 <h3>選択された回数：{{ $anim->s_count }}</h3>
             </div>
-            <a type="hidden" value="{{ $count++ }}"></a>
             @endforeach
         </div>
         <div class="footer">
             <a href="/profiles/{{ $profile->id }}/anims/edit">編集</a>
         </div>    
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/home">ホームへ</a>
+            <a href="/home">ホームへ</a>
         </div>
     </body>
 </html>
