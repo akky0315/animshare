@@ -148,7 +148,7 @@ class ProfileController extends Controller
     public function add4(Profile $profile, Request $request)
     {
         $input_id = $request['id'];
-        $profile->toProfiles()->attach($input_id, ['approval' => '0']);
+        $profile->toProfiles()->attach($input_id);
 
         return redirect('/profiles/'. $profile->id .'/friend');
     }

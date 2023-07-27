@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('from_profile_id')->constrained('profiles');
             $table->foreignId('to_profile_id')->constrained('profiles');
             $table->primary(['from_profile_id', 'to_profile_id']);
-            $table->boolean('approval');
+            $table->boolean('approval')->default(0);
             $table->softDeletes();
         });
     }
