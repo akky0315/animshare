@@ -1,0 +1,90 @@
+@charset "utf-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    text-align: center;
+    background-color: #ffffff;
+    
+    
+}
+
+.footer button {
+    width: 100px;
+    margin: 50px;
+    background: #87cefa;
+    color: #000000;
+    font-size: 20px;
+    border: 1px solid #000000;
+}
+
+h2 {
+    display: inline-block;
+    text-align: left;
+    color:black;
+    width: fit-content;
+    margin: 0 auto;
+    line-height: 1.5em;
+}
+
+.content h3 {
+    display: inline-block;
+    text-align: left;
+    color:black;
+    width: fit-content;
+    margin: 0 auto;
+    line-height: 1.5em;
+}
+
+.button {
+    width: 100px;
+    margin: auto;
+    background: #87cefa;
+    color: #000000;
+    font-size: 20px;
+    border: 1px solid #000000;
+}
+
+.textarea {
+    transform: translate(-20px, 40px);
+    margin: 20px;
+    padding: 8px 15px;
+    font-size: 18px;
+}
+
+.content2 {
+    transform: translate(-158px);
+}
+
+.content h4{
+    display: inline-block;
+    text-align: left;
+    color:black;
+    width: fit-content;
+    margin: 0 auto;
+    line-height: 1.5em;
+    transform: translate(0px, 10px);
+    padding: 8px 15px;
+    border: 1px solid #000000;
+}
+
+.center {
+    text-align: center;
+}
+
+a { 
+    text-decoration: none; 
+}
+a:link{
+    color:black;
+}
+a:visited{
+    color:black;
+}
+a:hover{
+    color:blue;
+}
+a:active{
+    color:black;
+}
