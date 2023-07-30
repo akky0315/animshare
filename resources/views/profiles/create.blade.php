@@ -16,13 +16,13 @@
                 <div class="content_name">
                     <h3>
                         最初にあなたのニックネームを教えてね！
-                    </h3>
+                    </h3><br>
                     <h2>名前</h2>
                     <input type="text" class="textarea" name="profile[name]" placeholder="ニックネーム">
                     <p class="name_error" style="color:red">{{ $errors->first('profile.name') }}</p>
                 </div><br>
                 <input type="hidden" name="profile[group_id]" value="1">
-                <input class="button" type="submit" value="決定">
+                <input type="submit" class="button" value="決定">
             </form>
         </div>
     </body>

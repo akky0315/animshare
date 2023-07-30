@@ -11,18 +11,18 @@
     <body class="antialiased">
         <h1 class="title">アニメ作成</h1>
         <div class="content">
+            @if ($profile_count->anims_count < 3)
             <h3>
                 {{ $profile->name }}さんようこそ！<br>
                 次に、あなたが紹介したいおすすめのアニメを３つ選んでね！
             </h3>
-            @if ($profile_count->anims_count < 3)
             <form action="/profiles/{{ $profile->id }}/create" method="POST">
                 @csrf
-                <div class="content_anims">
+                <div class="content_anims"><br>
                     @foreach($anims as $anim)
                         <div class="anim">
-                            <h3>アニメ名 : {{ $anim->title }}</h3>
-                        </div>
+                            <h2>アニメ名 : {{ $anim->title }}</h2>
+                        </div><br>
                     @endforeach
                 </div>
             </form>
@@ -32,18 +32,22 @@
             @endif
             
             @if($profile_count->anims_count >= 3)
+            <h3>
+                {{ $profile->name }}さんのおすすめするアニメは以下の３つになります！<br>
+                おすすめするアニメはあとで変更可能だよ！
+            </h3>
             <form action="/profiles/{{ $profile->id }}/create" method="POST">
                 @csrf
-                <div class="anims">
+                <div class="content_anims"><br>
                     @foreach($anims as $anim)
                         <div class="anim">
-                            <h3>アニメ名 : {{ $anim->title }}</h3>
+                            <h2>アニメ名 : {{ $anim->title }}</h2>
                         </div>
                     @endforeach
                 </div>
             </form>
             <div class="footer">
-                <a href="/profiles/{{ $profile->id }}/complete">決定</a>
+                <button onclick="location.href='/home'">決定</a>
             </div>
             @endif
         </div>
