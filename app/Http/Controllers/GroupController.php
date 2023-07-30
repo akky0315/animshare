@@ -33,6 +33,7 @@ class GroupController extends Controller
     {
         $input = $request['profile'];
         $profile->group_id = $input['group_id'];
+        $profile->preparate = 0;
         $profile->save();
         
         return redirect('/home');

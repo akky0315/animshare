@@ -43,6 +43,8 @@ class AnimController extends Controller
             'animdatas' => $animdatas,
             'profile' => $profile,
             'anim' => $anim,
+            'year' => $num['year'],
+            'cule' => $num['cule']
         ]);
     }
     public function insert(Profile $profile, Anim $anim, Request $request)
@@ -86,6 +88,8 @@ class AnimController extends Controller
             'animdatas' => $animdatas,
             'profile' => $profile,
             'anim' => $anim,
+            'year' => $num['year'],
+            'cule' => $num['cule']
         ]);
     }
     public function insert2(Profile $profile, Anim $anim, Request $request)

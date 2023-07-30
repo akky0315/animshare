@@ -6,26 +6,27 @@
         <title>Animshare</title>
         <!-- Fonts -->
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('css/app.home.css') }}">
     </head>
-    
     <body class="antialiased">
-        <h1 class="title">{{ $profile->name }}さんようこそ！<br></h1>
-        <div class="footer">
-            <a href="/profiles/{{ $profile->id }}">プロフィール表示<br></a>
-        </div>
-        <h3>おすすめアニメ表示<br></h3>
-        <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/anims/display">表示<br></a>
-        </div>
-        <h3>おすすめアニメ選択<br></h3>
-        <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/anims/select">選択<br></a>
-        </div>
-        <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/friend">フレンド<br></a>
-        </div>
-        <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/history">選択履歴</a>
+            <h1 class="title">{{ $profile->name }}さんようこそ！</h1><br>
+        <div class="content">
+            <div class="footer">
+                <a href="/profiles/{{ $profile->id }}">プロフィール表示</a>
+            </div><br>
+            <div class="footer">
+                <a href="/profiles/{{ $profile->id }}/anims/display">おすすめアニメ表示</a>
+            </div><br>
+            <div class="footer">
+                <a href="/profiles/{{ $profile->id }}/anims/select">おすすめアニメ選択</a>
+            </div><br>
+            <div class="footer">
+                <a href="/profiles/{{ $profile->id }}/friend">フレンド</a>
+            </div><br>
+            <div class="footer">
+                <a href="/profiles/{{ $profile->id }}/history">選択履歴</a>
+            </div>
         </div>
     </body>
 </x-app-layout>

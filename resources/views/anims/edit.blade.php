@@ -6,24 +6,30 @@
 
         <!-- Fonts -->
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
     </head>
     <body class="antialiased">
         <h1 class="title">アニメ編集</h1>
+        <div class="content">
+            <h3>お勧めするアニメを変更する際には、3つ目のアニメが変更されます</h3>
+        </div>
         <a type="hidden" value="{{ $count = 1 }}"></a>
         <div class="anims">
             @foreach($anims as $anim)
-            <div class="anim">
-                <h3>アニメ名：{{ $anim->title }}</h3>
+            <div class="anim"><br>
+                <h2>アニメ名：{{ $anim->title }}</h2>
             </div>
             <a type="hidden" value="{{ $count++ }}"></a>
             @if($count === 4)
-                <h3>次変更になるアニメ：{{ $anim->title }}</h3>
+                <h2><br>次変更になるアニメ：{{ $anim->title }}</h2>
             @endif
             @endforeach
         </div>
-        <a href="/profiles/{{ $profile->id }}/anims/edit/create/check/select">変更</a>
         <div class="footer">
-            <a href="/profiles/{{ $profile->id }}/anims/display">戻る</a>
+            <button onclick="location.href='/profiles/{{ $profile->id }}/anims/edit/create/check/select'">変更</a>
+        </div>
+        <div class="footer_back">
+            <button onclick="location.href='/profiles/{{ $profile->id }}/anims/display'">戻る</a>
         </div>
     </body>
 </html>
