@@ -18,15 +18,12 @@
     },
     "dependencies": {
         "debug": "^4.3.4"
+    },
+    "name": "example-app",
+    "description": "a really cool app",
+    "version": "1.0.0",
+    "engines": {
+        "node": "14.19.0",
+        "npm": "8.19.4"
     }
-}
-
-{
-  "name": "example-app",
-  "description": "a really cool app",
-  "version": "1.0.0",
-  "engines": {
-    "node": "14.19.0",
-    "npm": "8.19.4"
-  }
 }
