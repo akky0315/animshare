@@ -7,7 +7,6 @@
         <!-- Fonts -->
         <link href="https://fonts.leaapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('css/app.home.css') }}">
     </head>
     <body class="antialiased">
             <h1 class="title">{{ $profile->name }}さんようこそ！</h1><br>

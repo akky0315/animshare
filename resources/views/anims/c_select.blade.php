@@ -19,12 +19,14 @@
             <div class="footer">
                 <button onclick="location.href='/profiles/{{ $profile->id }}/anims/create/check'">検索<br></button>
             </div>
-            <div class="content2">
-                <h3>
-                    入力パターン<br>
-                    アニメタイトルをそのまま入力する方法<br>
-                </h3>
-            </div>
+        </div>
+        <div class="content">
+            <h3 style="transform: translate(-160px)">
+                入力パターン<br>
+                アニメタイトルをそのまま入力する方法<br>
+            </h3>
+        </div>
+        <div class="content">
             <div class="footer">
                 <button onclick="location.href='/profiles/{{ $profile->id }}/anims/create/input'">入力<br></button>
             </div>

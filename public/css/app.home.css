@@ -1,9 +1,0 @@
-@charset "utf-8";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.content {
-    text-align: left;
-    transform: translate(200px);
-}

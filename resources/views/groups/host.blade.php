@@ -51,9 +51,12 @@
         @endforeach
         @if($count["profiles_count"] === $count["g_count"])
             <div class="footer">
-                <button onclick="href='/profiles/{{ $my_profile->id }}/groups/{{ $group->id }}/match/check'">開始</button>
+                <button onclick="location.href='/profiles/{{ $my_profile->id }}/groups/{{ $group->id }}/match/check'">開始</button>
             </div>
         @endif
+        <div class="footer_update">
+            <button onclick="location.href='/profiles/{{ $my_profile->id }}/groups/{{ $group->id }}'">更新</button>
+        </div>
         </div>
     </body>
 </html>

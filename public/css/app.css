@@ -9,6 +9,16 @@ body {
     
 }
 
+.footer_update button {
+    transform: translate(300px, -134px);
+    width: 100px;
+    margin: 50px;
+    background: #ff6699;
+    color: #000000;
+    font-size: 20px;
+    border: 1px solid #000000;
+}
+
 .footer button {
     width: 100px;
     margin: 50px;
@@ -119,12 +129,6 @@ h2 {
 
 .content2 h2 {
     transform: translate(130px);
-    display: inline-block;
-    text-align: left;
-    color:black;
-    width: fit-content;
-    margin: 0 auto;
-    line-height: 1.5em;
 }
 
 .content_id {
@@ -347,10 +351,6 @@ h2 {
 
 .content2 {
     transform: translate(-158px);
-}
-
-.content3 {
-    transform: translate(-57px);
 }
 
 .content h4 {
