@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->boolean('preparate')->default(false);
+            $table->integer('preparate')->default(false);
         });
     }
 
