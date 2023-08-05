@@ -18,9 +18,9 @@
             </h3>
             <form action="/profiles/{{ $profile->id }}/create" method="POST">
                 @csrf
-                <div class="content_anims">
+                <div class="content_anims"><br>
                     @foreach($anims as $anim)
-                        <div class="anim">
+                        <div class="anim"><br>
                             <h2>アニメ名 : {{ $anim->title }}</h2>
                         </div><br>
                     @endforeach

@@ -17,7 +17,7 @@
                 @csrf
                 <div class="anims">
                     @foreach($anims as $anim)
-                        <div class="anim2">
+                        <div class="anim3">
                             <h2>アニメ名 : {{ $anim->title }}</h2>
                         </div>
                         <div class="radio">
@@ -25,7 +25,10 @@
                         </div>
                     @endforeach
                     <input type="hidden" name=profile[name] value="{{ $profile->name }}">
-                </div>
+                    <h3><br>
+                        グループ全員のマッチが完了してからアニメを選択して決定ボタンを押してね！
+                    </h3>
+                </div><br><br>
                 <input type='submit' class="button" value="決定">
             </form>
         </div>
