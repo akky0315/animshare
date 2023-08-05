@@ -16,9 +16,9 @@
         <a type="hidden" value="{{ $count = 1 }}"></a>
         <div class="anims">
             @foreach($anims as $anim)
-            <div class="anim"><br>
+            <div class="anim5"><br>
                 <h2>アニメ名：{{ $anim->title }}</h2>
-            </div>
+            </div><br>
             <a type="hidden" value="{{ $count++ }}"></a>
             @if($count === 4)
                 <h2><br>次変更になるアニメ：{{ $anim->title }}</h2>

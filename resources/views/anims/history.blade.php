@@ -19,12 +19,12 @@
         <div class="content2">
             <div class="anims">
                 @foreach($anims as $anim)
-                    <div class="anim4">
+                    <div class="anim5">
                         <h2>{{ $anim->title }}</h2>
                     </div>
-                    <div class="name10">
+                    <div class="profile3">
                         <h2>{{ $anim->profile->name }}</h2>
-                    </div>
+                    </div><br>
                 @endforeach
             </div>
         </div>

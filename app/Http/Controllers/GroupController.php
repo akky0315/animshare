@@ -44,6 +44,8 @@ class GroupController extends Controller
         $input_count = $request['count'];
         $profile->preparate = $input['preparate'];
         $group->g_count = $group->g_count + $input_count;
+        $group->shuffle_count = 0;
+        $group->m_profiles = NULL;
         $profile->g_num = $group->g_count;
         $profile->save();
         $group->save();
@@ -87,28 +89,36 @@ class GroupController extends Controller
             $count++;
         }
         
-        do
+        if($group->shuffle_count === 0)
         {
-            $judge = false;
-            $j_count = 0;
-            shuffle($m_profiles);
-            for($i = 0; $i < $group->g_count; $i++)
+            do
             {
-                if($m_profiles[$j_count] === $profiles[$j_count]->id)
+                $judge = false;
+                $j_count = 0;
+                shuffle($m_profiles);
+                for($i = 0; $i < $group->g_count; $i++)
                 {
-                    $judge = true;
-                    break;
+                    if($m_profiles[$j_count] === $profiles[$j_count]->id)
+                    {
+                        $judge = true;
+                        break;
+                    }
+                    $j_count++;
                 }
-                $j_count++;
             }
+            while($judge);
+            
+            $group->shuffle_count = 1;
+            $group->m_profiles = $m_profiles;
+            $group->g_count = 0;
+            $group->save();
         }
-        while($judge);
         
         for($i = 0; $i < $group->g_count; $i++)
         {
             if($profile->id === $profiles[$i]->id)
             {
-                $to_profile = Profile::all()->where('id', $m_profiles[$i])->first();
+                $to_profile = Profile::all()->where('id', $group->m_profiles[$i])->first();
             }
         }
         
@@ -116,7 +126,6 @@ class GroupController extends Controller
     }
      public function match2(Profile $profile, Anim $anim, Request $request)
     {
-        $profile->group_id = 1;
         $profile->preparate = 0;
         $profile->save();
         

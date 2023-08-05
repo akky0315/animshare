@@ -18,7 +18,7 @@
             <div class="footer">
                 <button onclick="location.href='/profiles/{{ $profile->id }}/groups/create'">フリー<br></button>
             </div>
-            <h3 style="transform: translate(-55px)">
+            <h3>
                 ランダムマッチ<br>
                 ランダムマッチはサイトを訪れてくれた人の中からランダムで選ばれるよ！<br>
             </h3>

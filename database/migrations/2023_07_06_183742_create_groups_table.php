@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
+            $table->integer('shuffle_count')->default(0);
+            $table->json('m_profiles')->nullable();
             $table->timestamps();
         });
     }

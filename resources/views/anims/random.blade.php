@@ -15,19 +15,19 @@
         </h1>
         <div class="content"><br>
             <form action="/profiles/{{ $profile->id }}/anims" method="POST">
-            @csrf
-            <div class="anims">
-                @foreach($anims as $anim)
-                <div class="anim3">
-                    <h2>アニメ名 : {{ $anim->title }}</h2>
+                @csrf
+                <div class="anims">
+                    @foreach($anims as $anim)
+                    <div class="anim3">
+                        <h2>アニメ名 : {{ $anim->title }}</h2>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="id" value="{{ $anim->id }}" style="transform:scale(1.5)">
+                    </div>
+                    @endforeach
+                    <input type="hidden" name=profile[name] value="{{ $profile->name }}">
                 </div>
-                <div class="radio">
-                    <input type="radio" name="id" value="{{ $anim->id }}" style="transform:scale(1.5)">
-                </div>
-                @endforeach
-                <input type="hidden" name=profile[name] value="{{ $profile->name }}">
-            </div>
-            <input type='submit' class="button" value="決定">
+                <input type='submit' class="button" value="決定">
             </form>
         </div>
     </body>

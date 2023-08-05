@@ -14,8 +14,8 @@
             <h3>
                 あなたのこのサイト内での名前とIDになります！<br>
                 IDはフレンド登録をする際に必要になるよ！
-            </h3>
-            <div class="profile"><br>
+            </h3><br>
+            <div class="profile3"><br>
                 <h2>名前：{{ $profile->name }}</h2><br>
                 <h2>ID：{{ $profile->password }}</h2>
             </div>

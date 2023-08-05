@@ -15,7 +15,7 @@
         </div><br>
         <div class="anims">
             @foreach($anims as $anim)
-            <div class="anim2">
+            <div class="anim5">
                 <h2>アニメ名 : {{ $anim->title }}</h2>
             </div>
             <div class="num">

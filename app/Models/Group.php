@@ -13,6 +13,10 @@ class Group extends Model
         'name',
     ];
     
+    protected $casts = [
+        'm_profiles' => 'array'
+    ];
+    
     public function profiles()
     {
         return $this->hasMany(Profile::class);
