@@ -19,7 +19,7 @@
                 @else
                     準備完了
                 @endif
-            </h2>
+            </h2><br>
             @if($profile->id === $my_profile->id)
                 <form action="/profiles/{{ $my_profile->id }}/groups/{{ $group->id }}/preparate" method="POST">
                     @csrf
