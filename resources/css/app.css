@@ -10,9 +10,8 @@ body {
 }
 
 .footer_update button {
-    transform: translate(300px, -134px);
-    width: 100px;
-    margin: 50px;
+    transform: translate(300px);
+    width: 130px;
     background: #ff6699;
     color: #000000;
     font-size: 20px;
@@ -20,7 +19,7 @@ body {
 }
 
 .footer button {
-    width: 100px;
+    width: 130px;
     margin: 50px;
     background: #87cefa;
     color: #000000;
@@ -30,7 +29,7 @@ body {
 
 .footer_group .button {
     transform: translate(100px, -88px);
-    width: 100px;
+    width: 130px;
     margin: 50px;
     background: #87cefa;
     color: #000000;
@@ -40,7 +39,7 @@ body {
 
 .footer_group .button_yellow {
     transform: translate(100px, -88px);
-    width: 100px;
+    width: 130px;
     margin: 50px;
     background: yellow;
     color: #000000;
@@ -50,7 +49,7 @@ body {
 
 .footer_back button {
     transform: translate(250px);
-    width: 100px;
+    width: 130px;
     margin: 50px;
     background: #c0c0c0;
     color: #000000;
@@ -59,8 +58,8 @@ body {
 }
 
 .footer_back .button {
-    transform: translate(250px, -222px);
-    width: 100px;
+    transform: translate(280px, -210px);
+    width: 130px;
     margin: 50px;
     background: #c0c0c0;
     color: #000000;
@@ -70,7 +69,7 @@ body {
 
 .footer_home button {
     transform: translate(250px);
-    width: 100px;
+    width: 130px;
     margin: 50px;
     background: #c0c0c0;
     color: #000000;
@@ -79,8 +78,8 @@ body {
 }
 
 .footer_approval button {
-    transform: translate(100px, -134px);
-    width: 100px;
+    transform: translate(100px, -124px);
+    width: 130px;
     margin: 50px;
     background: #c0c0c0;
     color: #000000;
@@ -90,7 +89,7 @@ body {
 
 .footer_wait button {
     transform: translate(-100px);
-    width: 100px;
+    width: 130px;
     margin: 50px;
     background: #c0c0c0;
     color: #000000;
@@ -100,7 +99,7 @@ body {
 
 .footer_add button {
     transform: translate(250px, -50px);
-    width: 100px;
+    width: 130px;
     margin: 50px;
     background: #87cefa;
     color: #000000;
@@ -136,12 +135,18 @@ h2 {
 }
 
 .profile {
-    transform: translate(200px);
+    transform: translate(250px);
     display: inline-block;
     text-align: left;
     color:black;
-    width: 800px;
-    margin: 0 auto;
+    line-height: 1.5em;
+}
+
+.profile3 {
+    transform: translate(0px);
+    display: inline-block;
+    text-align: left;
+    color:black;
     line-height: 1.5em;
 }
 
@@ -166,12 +171,10 @@ h2 {
 }
 
 .anim5 {
-    transform: translate(300px);
+    transform: translate(-200px);
     display: inline-block;
     text-align: left;
     color:black;
-    width: 800px;
-    margin: 0 auto;
     line-height: 1.5em;
 }
 
@@ -182,6 +185,15 @@ h2 {
     color:black;
     width: 800px;
     margin: 0 auto;
+    line-height: 1.5em;
+}
+
+.anim5 {
+    transform: translate(-100px);
+    display: inline-block;
+    text-align: left;
+    color:black;
+    width:500px;
     line-height: 1.5em;
 }
 
@@ -211,9 +223,7 @@ h2 {
 }
 
 .num {
-    text-align: right;
-    transform: translate(800px, -37px);
-    width: 0px;
+    transform: translate(336px, -37px);
 }
 
 .name10 {
@@ -246,16 +256,17 @@ h2 {
 }
 
 .content h3 {
+    transform: translate(0px);
     display: inline-block;
     text-align: left;
     color:black;
-    width: fit-content;
-    margin: 0 auto;
+    margin: 0;
+    font-size: 20px;
     line-height: 1.5em;
 }
 
 .button {
-    width: 100px;
+    width: 130px;
     margin: auto;
     background: #87cefa;
     color: #000000;
@@ -265,7 +276,7 @@ h2 {
 
 .button_add {
     transform: translate(200px);
-    width: 100px;
+    width: 130px;
     margin: auto;
     background: #87cefa;
     color: #000000;
@@ -275,7 +286,7 @@ h2 {
 
 .button_wait {
     transform: translate(300px, -36px);
-    width: 100px;
+    width: 130px;
     margin: auto;
     background: red;
     color: #000000;
@@ -285,7 +296,7 @@ h2 {
 
 .button_approval {
     transform: translate(240px, -36px);
-    width: 100px;
+    width: 130px;
     margin: auto;
     background: #87cefa;
     color: #000000;
@@ -295,7 +306,7 @@ h2 {
 
 .button_leave {
     transform: translate(380px, -70px);
-    width: 100px;
+    width: 130px;
     margin: auto;
     background: red;
     color: #000000;
@@ -305,7 +316,7 @@ h2 {
 
 .button_join {
     transform: translate(460px, -38px);
-    width: 100px;
+    width: 130px;
     margin: auto;
     background: #87cefa;
     color: #000000;
@@ -315,7 +326,7 @@ h2 {
 
 .button_delete {
     transform: translate(520px, 0px);
-    width: 100px;
+    width: 130px;
     margin: auto;
     background: red;
     color: #000000;
