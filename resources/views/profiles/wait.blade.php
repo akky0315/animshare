@@ -10,7 +10,7 @@
     
     <body class="antialiased">
         <h1>承認待ち</h1>
-        <div class="profile">
+        <div class="profile3">
             @csrf
             @foreach ($waiters as $waiter)
                 @if($waiter->pivot->approval === 0)
@@ -22,7 +22,8 @@
                     </form>
                 @endif
             @endforeach
-        </div><div class="footer_home">
+        </div>
+        <div class="footer_home">
             <button onclick="location.href='/profiles/{{ $profile->id }}/friend'">戻る</a>
         </div>
     </body>

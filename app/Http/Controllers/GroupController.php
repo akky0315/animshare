@@ -119,10 +119,9 @@ class GroupController extends Controller
             if($profile->id === $profiles[$i]->id)
             {
                 $to_profile = Profile::all()->where('id', $group->m_profiles[$i])->first();
+                return view('groups.match')->with(['profile' => $profile, 'to_profile' => $to_profile, 'anims' => $to_profile->getByProfile()]);   //受け取ったprofileのidを外部キーにもつanimレコードを取得
             }
         }
-        
-        return view('groups.match')->with(['profile' => $profile, 'to_profile' => $to_profile, 'anims' => $to_profile->getByProfile()]);   //受け取ったprofileのidを外部キーにもつanimレコードを取得
     }
      public function match2(Profile $profile, Anim $anim, Request $request)
     {

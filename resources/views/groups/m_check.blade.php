@@ -13,7 +13,7 @@
         <div class="content">
             @foreach($profiles as $profile)<br>
             <input type="hidden" value="{{ $i = 1 }}">
-            <div class="profile">
+            <div class="profile3">
                 <h2>{{ $profile->name }}</h2>
             </div><br>
             <div class="anim3">
