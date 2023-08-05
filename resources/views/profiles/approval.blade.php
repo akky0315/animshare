@@ -10,7 +10,7 @@
     
     <body class="antialiased">
         <h1>未承認</h1>
-        <div class="profile3">
+        <div class="profile4">
             @csrf
             @foreach ($waitees as $waitee)
                 @if($waitee->pivot->approval === 0)

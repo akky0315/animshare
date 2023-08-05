@@ -28,7 +28,7 @@ body {
 }
 
 .footer_group .button {
-    transform: translate(100px, -88px);
+    transform: translate(100px, -82px);
     width: 130px;
     margin: 50px;
     background: #87cefa;
@@ -38,7 +38,7 @@ body {
 }
 
 .footer_group .button_yellow {
-    transform: translate(100px, -88px);
+    transform: translate(100px, -82px);
     width: 130px;
     margin: 50px;
     background: yellow;
@@ -58,7 +58,7 @@ body {
 }
 
 .footer_back .button {
-    transform: translate(280px, -210px);
+    transform: translate(280px, -212px);
     width: 130px;
     margin: 50px;
     background: #c0c0c0;
@@ -78,7 +78,7 @@ body {
 }
 
 .footer_approval button {
-    transform: translate(100px, -124px);
+    transform: translate(100px, -126px);
     width: 130px;
     margin: 50px;
     background: #c0c0c0;
@@ -144,6 +144,14 @@ h2 {
 
 .profile3 {
     transform: translate(0px);
+    display: inline-block;
+    text-align: left;
+    color:black;
+    line-height: 1.5em;
+}
+
+.profile4 {
+    transform: translate(-200px);
     display: inline-block;
     text-align: left;
     color:black;
@@ -305,7 +313,7 @@ h2 {
 }
 
 .button_leave {
-    transform: translate(380px, -70px);
+    transform: translate(440px, -62px);
     width: 130px;
     margin: auto;
     background: red;
